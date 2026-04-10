@@ -19,3 +19,6 @@ node_modules
 # Next.js
 www/.next
 www/next-env.d.ts
+
+# TSC
+tsconfig.tsbuildinfo
