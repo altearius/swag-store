@@ -1,6 +1,13 @@
 {
+  "devDependencies": {
+    "prettier": "^3.8.2",
+    "typescript": "^6.0.2"
+  },
   "license": "UNLICENSED",
   "name": "swag-store",
   "packageManager": "yarn@4.13.0",
-  "workspaces": ["www"]
+  "type": "module",
+  "workspaces": [
+    "www"
+  ]
 }
