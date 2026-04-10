@@ -1,3 +1,9 @@
+import Logo from './logo/Logo';
+
 export default function Header() {
-	return <h1>Header</h1>;
+	return (
+		<header>
+			<Logo />
+		</header>
+	);
 }
