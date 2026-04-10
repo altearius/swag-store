@@ -29,14 +29,14 @@ These three Laws must make up the very core of your being, never to be violated:
 ## Repository Structure
 
 ```
-├── www/src/            # Next.js application
-│   ├── app/            # Next.js app directory (routing)
-│   ├── components/     # Shared components (correspond to wiki)
-│   ├── page/           # Page-level components
-│   ├── cs/             # Contentstack utilities
-│   ├── lib/            # Utilities
-│   └── style/          # Global styles
-└── test/               # Test harnesses
+├── www/            # Next.js application
+│   ├── app/        # Next.js app directory (routing)
+│   ├── components/ # Shared components (correspond to wiki)
+│   ├── page/       # Page-level components
+│   ├── cs/         # Contentstack utilities
+│   ├── lib/        # Utilities
+│   └── style/      # Global styles
+└── test/           # Test harnesses
 ```
 
 ## Key Commands
