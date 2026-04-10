@@ -1,4 +1,12 @@
 {
+  "name": "www",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
   "dependencies": {
     "next": "^16.2.3",
     "react": "^19.2.5",
@@ -11,13 +19,5 @@
     "@types/react-dom": "^19.2.3",
     "typescript": "^6.0.2"
   },
-  "license": "UNLICENSED",
-  "name": "www",
-  "packageManager": "yarn@4.13.0",
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "start": "next start"
-  },
-  "type": "module"
+  "packageManager": "yarn@4.13.0"
 }

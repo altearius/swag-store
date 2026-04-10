@@ -1,13 +1,21 @@
 {
-  "devDependencies": {
-    "prettier": "^3.8.2",
-    "typescript": "^6.0.2"
-  },
-  "license": "UNLICENSED",
   "name": "swag-store",
-  "packageManager": "yarn@4.13.0",
-  "type": "module",
+  "license": "UNLICENSED",
   "workspaces": [
     "www"
-  ]
+  ],
+  "type": "module",
+  "scripts": {
+    "fmt": "oxfmt",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "oxfmt": "^0.44.0"
+  },
+  "devDependencies": {
+    "oxlint": "^1.59.0",
+    "oxlint-tsgolint": "^0.20.0",
+    "typescript": "^6.0.2"
+  },
+  "packageManager": "yarn@4.13.0"
 }
