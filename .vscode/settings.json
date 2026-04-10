@@ -1,0 +1,54 @@
+{
+	"[css]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.stylelint": "explicit"
+		}
+	},
+	"[javascript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "always",
+			"source.organizeImports": "always",
+			"source.removeUnusedImports": "always",
+			"source.sortImports": "always"
+		},
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[typescript]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "always",
+			"source.organizeImports": "always",
+			"source.removeUnusedImports": "always",
+			"source.sortImports": "always"
+		},
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"css.validate": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"files.associations": {
+		".env.example": "properties",
+		"yarn.lock": "yaml"
+	},
+	"files.readonlyInclude": {
+		".yarn/**": true,
+		"yarn.lock": true
+	},
+	"js/ts.preferences.importModuleSpecifier": "project-relative",
+	"js/ts.preferences.preferTypeOnlyAutoImports": true,
+	"js/ts.preferences.quoteStyle": "single",
+	"js/ts.tsc.autoDetect": "off",
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"less.validate": false,
+	"npm.packageManager": "yarn",
+	"scss.validate": false,
+	"search.exclude": {
+		".yarn/**": true,
+		"yarn.lock": true
+	}
+}
