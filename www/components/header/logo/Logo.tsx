@@ -1,3 +1,3 @@
 export default function Logo() {
-	return 'Logo';
+	return <a href="/">▲ Swag Store</a>;
 }
