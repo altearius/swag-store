@@ -7,6 +7,10 @@
       "types": "./api/*.ts",
       "default": "./api/*"
     },
+    "#lib/*": {
+      "types": "./lib/*.ts",
+      "default": "./lib/*"
+    },
     "#www/*": "./*"
   },
   "scripts": {

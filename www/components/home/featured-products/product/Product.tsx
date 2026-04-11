@@ -1,9 +1,35 @@
 import type { Product as ProductModel } from '#api/products/listProducts';
+import formatPrice from '#lib/formatPrice';
+import Image from 'next/image';
+import styles from './Product.module.css';
 
 interface Props {
 	readonly product: ProductModel;
 }
 
 export default function Product(p: Props) {
-	return <div>Product: {p.product.name}</div>;
+	const { currency, images: [imageSrc] = [], name, price } = p.product;
+	const hasPrice = typeof price === 'number';
+
+	return (
+		<div className={styles['product']}>
+			{imageSrc ? (
+				<div className={styles['image']}>
+					<Image
+						alt={p.product.name ?? ''}
+						fill
+						style={{ objectFit: 'contain' }}
+						src={imageSrc}
+					/>
+				</div>
+			) : null}
+
+			{name && hasPrice ? (
+				<div className={styles['detail']}>
+					{name ? <h3>{p.product.name}</h3> : null}
+					{hasPrice ? <p>{formatPrice(price, currency)}</p> : null}
+				</div>
+			) : null}
+		</div>
+	);
 }

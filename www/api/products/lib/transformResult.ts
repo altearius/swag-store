@@ -20,6 +20,7 @@ export default function transformResult(result: Readable<Result> | undefined) {
 function transformItem(item: Readable<ResultItem>) {
 	const {
 		createdAt: rawCreatedAt,
+		currency,
 		images: rawImages,
 		tags: rawTags,
 		...rest
@@ -40,5 +41,9 @@ function transformItem(item: Readable<ResultItem>) {
 		...(createdAt ? { createdAt } : {}),
 		...(images ? { images } : {}),
 		...(tags ? { tags } : {}),
+		// API documentation says all prices are in USD, but products still contain
+		// an optional currency code. I'm assuming this is meant to support other
+		// currencies, but USD is the default.
+		currency: currency ?? 'USD',
 	} as const;
 }

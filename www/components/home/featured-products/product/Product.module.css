@@ -1,0 +1,19 @@
+.image {
+	position: relative;
+	width: calc(100vw - 2rem);
+	height: calc(100vw - 2rem);
+}
+
+.detail {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+
+	h3 {
+		font-family: var(--font-orbitron);
+	}
+
+	p {
+		font-family: var(--font-noto);
+	}
+}

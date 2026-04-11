@@ -1,0 +1,6 @@
+.featured-products {
+	> ol {
+		list-style: none;
+		padding: 1rem;
+	}
+}

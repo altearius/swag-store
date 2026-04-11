@@ -1,4 +1,5 @@
 import type { Product as ProductModel } from '#api/products/listProducts';
+import styles from './FeaturedProducts.module.css';
 import Product from './product/Product';
 
 interface Props {
@@ -11,7 +12,7 @@ export default function FeaturedProductsView(p: Props) {
 	}
 
 	return (
-		<section>
+		<section className={styles['featured-products']}>
 			<h2>Featured Products</h2>
 
 			<ol>
