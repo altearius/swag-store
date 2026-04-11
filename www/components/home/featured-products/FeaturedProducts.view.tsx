@@ -1,4 +1,8 @@
+'use client';
+
 import type { Product as ProductModel } from '#api/products/listProducts';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import styles from './FeaturedProducts.module.css';
 import Product from './product/Product';
 
@@ -7,6 +11,8 @@ interface Props {
 }
 
 export default function FeaturedProductsView(p: Props) {
+	const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+
 	if (p.products.length === 0) {
 		return null;
 	}
@@ -15,15 +21,15 @@ export default function FeaturedProductsView(p: Props) {
 		<section className={styles['featured-products']}>
 			<h2>Featured Products</h2>
 
-			<ol>
-				{p.products.map((product, idx) => {
-					return (
+			<div ref={emblaRef}>
+				<ol>
+					{p.products.map((product, idx) => (
 						<li key={product.id ?? idx}>
 							<Product product={product} />
 						</li>
-					);
-				})}
-			</ol>
+					))}
+				</ol>
+			</div>
 		</section>
 	);
 }
