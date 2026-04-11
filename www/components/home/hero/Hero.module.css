@@ -4,10 +4,10 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
-	text-align: center;
 
 	h1 {
 		font-family: var(--font-orbitron);
+		text-align: center;
 	}
 
 	p {
@@ -31,6 +31,9 @@
 
 	@media (width >= 40rem) {
 		align-items: flex-start;
-		text-align: left;
+
+		h1 {
+			text-align: left;
+		}
 	}
 }
