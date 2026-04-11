@@ -1,4 +1,8 @@
 .featured-products {
+	> h2 {
+		font-family: var(--font-orbitron);
+	}
+
 	> ol {
 		list-style: none;
 		padding: 1rem;
