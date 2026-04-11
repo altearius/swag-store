@@ -1,7 +1,12 @@
-@import url('./_colors.css');
-
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+:root {
+	--color-text: #000;
+	--color-inverse-bg: #000;
+	--color-inverse: #fff;
+	--layout-max-width: min(calc(100vw - 2rem), 1200px);
 }

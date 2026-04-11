@@ -22,4 +22,15 @@
 		color: var(--color-inverse);
 		border-radius: 20px;
 	}
+
+	> * {
+		max-width: var(--layout-max-width);
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	@media (width >= 40rem) {
+		align-items: flex-start;
+		text-align: left;
+	}
 }

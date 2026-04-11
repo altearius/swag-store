@@ -1,22 +1,50 @@
 .featured-products {
-	> h2 {
+	h2 {
 		font-family: var(--font-orbitron);
-		padding: 0 1rem;
+		max-width: var(--layout-max-width);
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	ol {
+		list-style: none;
+		padding: 1rem;
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		max-width: var(--layout-max-width);
+		justify-content: space-evenly;
+		margin: 0 auto;
+		width: 100%;
 	}
 
 	> div {
 		overflow: hidden;
 
 		> ol {
-			list-style: none;
-			padding: 1rem;
-			display: flex;
 			touch-action: pan-y pinch-zoom;
-			gap: 1rem;
+			flex-wrap: nowrap;
+			max-width: unset;
+			margin: 0;
+			width: unset;
 
 			> li {
 				flex: 0 0 100%;
 				min-width: 0;
+			}
+		}
+	}
+
+	@media (width >= 40rem) {
+		ol {
+			gap: 2rem;
+		}
+
+		> div {
+			> ol {
+				> li {
+					flex: 0 0 auto;
+				}
 			}
 		}
 	}

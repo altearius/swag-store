@@ -2,6 +2,11 @@
 	position: relative;
 	width: calc(100vw - 2rem);
 	height: calc(100vw - 2rem);
+
+	@media (width >= 40rem) {
+		width: 20rem;
+		height: 20rem;
+	}
 }
 
 .detail {
@@ -15,5 +20,11 @@
 
 	p {
 		font-family: var(--font-noto);
+	}
+
+	@media (width >= 40rem) {
+		flex-direction: column;
+		gap: 0.5rem;
+		width: 20rem;
 	}
 }
