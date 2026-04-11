@@ -3,6 +3,10 @@ import type { components } from '../openapi.yaml';
 
 type Promotion = components['schemas']['Promotion'];
 
+// Note: the documentation says "May return a different promotion on
+// each request," which implies that we should not attempt to cache this
+// too heavily.
+
 export default async function getActivePromotion() {
 	const client = createClient();
 	const result = await client.GET('/promotions');

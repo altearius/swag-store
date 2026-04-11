@@ -1,3 +1,5 @@
 :root {
 	--color-text: #000;
+	--color-inverse-bg: #000;
+	--color-inverse: #fff;
 }

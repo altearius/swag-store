@@ -1,0 +1,16 @@
+.banner {
+	background-color: var(--color-inverse-bg);
+	color: var(--color-inverse);
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	h2 {
+		font-family: var(--font-orbitron);
+	}
+
+	p {
+		font-family: var(--font-noto);
+	}
+}
