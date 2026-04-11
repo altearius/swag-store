@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Header from '../components/header/Header';
-import Orbitron from '../fonts/Orbiton';
+import Orbitron from '../style/fonts/Orbiton';
+import '../style/global.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
