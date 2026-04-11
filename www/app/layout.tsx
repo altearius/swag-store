@@ -7,12 +7,18 @@ import Noto from '../style/fonts/Noto';
 import Orbitron from '../style/fonts/Orbiton';
 import '../style/global.css';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+interface Props {
+	readonly children: ReactNode;
+}
+
+export default async function RootLayout(p: Props) {
+	'use cache';
+
 	return (
 		<html lang="en">
 			<body className={clsx(Orbitron.variable, Noto.variable)}>
 				<Header />
-				{children}
+				{p.children}
 				<Footer />
 			</body>
 		</html>
