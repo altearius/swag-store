@@ -1,6 +1,6 @@
 {
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"ignorePatterns": ["www/api/openapi.yaml"],
+	"ignorePatterns": ["www/api/openapi.yaml", "www/api/openapi.d.yaml.ts"],
 	"semi": true,
 	"singleQuote": true,
 	"overrides": [

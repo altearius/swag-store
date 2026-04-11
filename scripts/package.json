@@ -1,6 +1,10 @@
 {
   "name": "scripts",
+  "license": "UNLICENSED",
   "type": "module",
+  "dependencies": {
+    "openapi-typescript": "^7.13.0"
+  },
   "devDependencies": {
     "@tsconfig/node-ts": "^23.6.4",
     "@tsconfig/node24": "^24.0.4",

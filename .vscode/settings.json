@@ -47,6 +47,8 @@
 	},
 	"files.readonlyInclude": {
 		".yarn/**": true,
+		"www/api/openapi.d.yaml.ts": true,
+		"www/api/openapi.yaml": true,
 		"yarn.lock": true
 	},
 	"js/ts.preferences.importModuleSpecifier": "project-relative",
