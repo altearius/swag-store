@@ -10,7 +10,9 @@ export default function Home() {
 				<Banner />
 			</Suspense>
 			<Hero />
-			<FeaturedProducts />
+			<Suspense>
+				<FeaturedProducts />
+			</Suspense>
 		</main>
 	);
 }
