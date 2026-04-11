@@ -3,6 +3,7 @@
 	"ignorePatterns": ["www/api/openapi.yaml", "www/api/openapi.d.yaml.ts"],
 	"semi": true,
 	"singleQuote": true,
+	"printWidth": 80,
 	"overrides": [
 		{
 			"files": ["package.json"],

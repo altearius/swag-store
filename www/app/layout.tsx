@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import type { StoreConfiguration } from '../api/store/getStoreConfiguration';
+import getStoreConfiguration from '../api/store/getStoreConfiguration';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
 import Noto from '../style/fonts/Noto';
@@ -25,19 +27,38 @@ export default async function RootLayout(p: Props) {
 	);
 }
 
-export const metadata: Metadata = {
-	title: 'Swag Store',
-	description: 'A store for swag',
-	openGraph: {
-		title: 'Swag Store',
-		description: 'A store for swag',
-		siteName: 'Swag Store',
-		type: 'website',
-	},
-	robots: {
-		// Assuming Vercel would rather this example site is not indexed by
-		// search engines.
-		index: false,
-		follow: false,
-	},
-};
+export async function generateMetadata(): Promise<Metadata> {
+	'use cache';
+
+	const config = await getStoreConfiguration();
+
+	return {
+		robots: {
+			// Assuming Vercel would rather this example site is not indexed by
+			// search engines.
+			index: false,
+			follow: false,
+		},
+		...transformMetadata(config),
+	};
+}
+
+function transformMetadata(config: StoreConfiguration): Metadata {
+	const seo = config?.seo;
+
+	const { defaultTitle: title, defaultDescription: description } = seo ?? {};
+
+	const data = {
+		...(title ? { title } : {}),
+		...(description ? { description } : {}),
+	};
+
+	return {
+		...data,
+		openGraph: {
+			...data,
+			...(config?.storeName ? { siteName: config.storeName } : {}),
+			type: 'website',
+		},
+	};
+}
