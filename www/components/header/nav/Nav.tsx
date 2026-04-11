@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import styles from './Nav.module.css';
 
 interface Props {
-	readonly className?: string;
+	readonly className?: string | undefined;
 }
 
 export default function Nav(p: Props) {

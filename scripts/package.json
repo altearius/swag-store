@@ -1,0 +1,10 @@
+{
+  "name": "scripts",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/node-ts": "^23.6.4",
+    "@tsconfig/node24": "^24.0.4",
+    "typescript": "^6.0.2"
+  },
+  "packageManager": "yarn@4.13.0"
+}

@@ -1,9 +1,5 @@
 {
 	"include": [],
 	"files": [],
-	"references": [
-		{
-			"path": "www"
-		}
-	]
+	"references": [{ "path": "scripts" }, { "path": "www" }]
 }

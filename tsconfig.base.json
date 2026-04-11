@@ -1,0 +1,14 @@
+{
+	"extends": "@tsconfig/strictest/tsconfig.json",
+	"compilerOptions": {
+		"forceConsistentCasingInFileNames": true,
+		"newLine": "LF",
+		"noEmitOnError": true,
+		// noUnusedLocals and noUnusedParameters are enforced through lint (i hope)
+		// because it annoys me when I cannot build just because I have not
+		// finished coding yet.
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"useUnknownInCatchVariables": true
+	}
+}

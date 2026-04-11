@@ -1,5 +1,5 @@
 interface Props {
-	readonly className?: string;
+	readonly className?: string | undefined;
 }
 
 export default function Cart(p: Props) {

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import styles from './Logo.module.css';
 
 interface Props {
-	readonly className?: string;
+	readonly className?: string | undefined;
 }
 
 export default function Logo(p: Props) {

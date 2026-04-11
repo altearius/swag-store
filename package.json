@@ -2,6 +2,7 @@
   "name": "swag-store",
   "license": "UNLICENSED",
   "workspaces": [
+    "scripts",
     "www"
   ],
   "type": "module",
@@ -17,6 +18,7 @@
     "oxfmt": "^0.44.0"
   },
   "devDependencies": {
+    "@tsconfig/strictest": "^2.0.8",
     "oxlint": "^1.59.0",
     "oxlint-tsgolint": "^0.20.0",
     "stylelint": "^17.6.0",
