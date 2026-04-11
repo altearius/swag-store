@@ -1,3 +1,9 @@
+.product {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
 .image {
 	position: relative;
 	width: calc(100vw - 2rem);

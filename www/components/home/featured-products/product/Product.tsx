@@ -1,6 +1,7 @@
 import type { Product as ProductModel } from '#api/products/listProducts';
 import formatPrice from '#lib/formatPrice';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Product.module.css';
 
 interface Props {
@@ -8,11 +9,14 @@ interface Props {
 }
 
 export default function Product(p: Props) {
-	const { currency, images: [imageSrc] = [], name, price } = p.product;
+	const { currency, images: [imageSrc] = [], name, price, slug } = p.product;
 	const hasPrice = typeof price === 'number';
 
+	const encodedSlug = encodeURIComponent(slug ?? '');
+	const href = `/products/${encodedSlug}` as const;
+
 	return (
-		<div className={styles['product']}>
+		<Link className={styles['product']} href={href}>
 			{imageSrc ? (
 				<div className={styles['image']}>
 					<Image
@@ -30,6 +34,6 @@ export default function Product(p: Props) {
 					{hasPrice ? <p>{formatPrice(price, currency)}</p> : null}
 				</div>
 			) : null}
-		</div>
+		</Link>
 	);
 }
