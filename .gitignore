@@ -22,3 +22,6 @@ www/next-env.d.ts
 
 # TSC
 tsconfig.tsbuildinfo
+
+# Ignore the local .env file
+.env
