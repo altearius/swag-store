@@ -1,8 +1,13 @@
+import clsx from 'clsx';
 import styles from './Logo.module.css';
 
-export default function Logo() {
+interface Props {
+	readonly className?: string;
+}
+
+export default function Logo(p: Props) {
 	return (
-		<a href="/" className={styles['logo']}>
+		<a href="/" className={clsx(styles['logo'], p.className)}>
 			▲ Swag Store
 		</a>
 	);

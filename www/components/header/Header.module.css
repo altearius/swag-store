@@ -1,0 +1,26 @@
+.header {
+	display: grid;
+	padding: 0 1rem;
+	gap: 0.5rem;
+	grid-template:
+		'logo cart' auto
+		'nav nav' auto / 50% 50%;
+
+	@media (width >= 40rem) {
+		grid-template: 'logo nav cart' auto / auto 1fr auto;
+		gap: 2rem;
+	}
+}
+
+.logo {
+	grid-area: logo;
+}
+
+.nav {
+	grid-area: nav;
+}
+
+.cart {
+	grid-area: cart;
+	justify-self: end;
+}

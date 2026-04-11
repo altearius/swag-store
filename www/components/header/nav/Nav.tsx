@@ -1,8 +1,13 @@
+import clsx from 'clsx';
 import styles from './Nav.module.css';
 
-export default function Nav() {
+interface Props {
+	readonly className?: string;
+}
+
+export default function Nav(p: Props) {
 	return (
-		<nav className={styles['nav']}>
+		<nav className={clsx(styles['nav'], p.className)}>
 			<ol>
 				<li>
 					<a href="/">Home</a>

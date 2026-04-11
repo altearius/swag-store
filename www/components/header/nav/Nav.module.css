@@ -3,6 +3,11 @@
 		display: flex;
 		list-style: none;
 		justify-content: space-around;
+
+		@media (width >= 40rem) {
+			justify-content: flex-start;
+			gap: 1rem;
+		}
 	}
 
 	a,
