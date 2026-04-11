@@ -10,6 +10,7 @@ const Config: NextConfig = {
 			},
 		],
 	},
+	typedRoutes: true,
 };
 
 export default Config;

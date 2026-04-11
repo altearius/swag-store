@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import styles from './Nav.module.css';
 
 interface Props {
@@ -10,7 +11,7 @@ export default function Nav(p: Props) {
 		<nav className={clsx(styles['nav'], p.className)}>
 			<ol>
 				<li>
-					<a href="/">Home</a>
+					<Link href="/">Home</Link>
 				</li>
 				<li>
 					<a href="/search">Search</a>

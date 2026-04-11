@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import styles from './Logo.module.css';
 
 interface Props {
@@ -7,8 +8,8 @@ interface Props {
 
 export default function Logo(p: Props) {
 	return (
-		<a href="/" className={clsx(styles['logo'], p.className)}>
+		<Link href="/" className={clsx(styles['logo'], p.className)}>
 			▲ Swag Store
-		</a>
+		</Link>
 	);
 }
