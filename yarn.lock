@@ -1609,6 +1609,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"openapi-fetch@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "openapi-fetch@npm:0.17.0"
+  dependencies:
+    openapi-typescript-helpers: "npm:^0.1.0"
+  checksum: 10c0/7e981d28c7839469662a73d44f3a85e05c1a5842a8afd5d6e36c75cbf085aa7f705862871cc7ce07c04605ddc936af3d5850c2cc66d193ee1fea07e7135da192
+  languageName: node
+  linkType: hard
+
+"openapi-typescript-helpers@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "openapi-typescript-helpers@npm:0.1.0"
+  checksum: 10c0/3a148cf7d6a7f51124966a0fef64c2fbcf1a5a0a1e6320dd627f0733787ac4259877be43f7a7a2910684e3d5d238c6a9655c6f9e1f3adaa9a2a61477e3b8481f
+  languageName: node
+  linkType: hard
+
 "openapi-typescript@npm:^7.13.0":
   version: 7.13.0
   resolution: "openapi-typescript@npm:7.13.0"
@@ -2385,6 +2401,7 @@ __metadata:
     "@types/react-dom": "npm:^19.2.3"
     clsx: "npm:^2.1.1"
     next: "npm:^16.2.3"
+    openapi-fetch: "npm:^0.17.0"
     react: "npm:^19.2.5"
     react-dom: "npm:^19.2.5"
     tslib: "npm:^2.8.1"
