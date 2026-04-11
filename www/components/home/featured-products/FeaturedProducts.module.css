@@ -1,6 +1,7 @@
 .featured-products {
 	> h2 {
 		font-family: var(--font-orbitron);
+		padding: 0 1rem;
 	}
 
 	> ol {
