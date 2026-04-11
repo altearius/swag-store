@@ -60,5 +60,6 @@
 	"search.exclude": {
 		".yarn/**": true,
 		"yarn.lock": true
-	}
+	},
+	"stylelint.packageManager": "yarn"
 }

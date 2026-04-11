@@ -9,7 +9,9 @@
     "build": "tsc --build ./tsconfig.json",
     "dev": "yarn workspace www dev",
     "fmt": "oxfmt",
-    "lint": "oxlint"
+    "lint": "yarn lint:ts && yarn lint:css",
+    "lint:ts": "oxlint",
+    "lint:css": "stylelint '**/*.css'"
   },
   "dependencies": {
     "oxfmt": "^0.44.0"
@@ -17,6 +19,8 @@
   "devDependencies": {
     "oxlint": "^1.59.0",
     "oxlint-tsgolint": "^0.20.0",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0",
     "typescript": "^6.0.2"
   },
   "packageManager": "yarn@4.13.0"
