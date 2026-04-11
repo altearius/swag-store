@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import Banner from './banner/Banner';
+import FeaturedProducts from './featured-products/FeaturedProducts';
 import Hero from './hero/Hero';
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
 				<Banner />
 			</Suspense>
 			<Hero />
-			<p>Featured Products</p>
+			<FeaturedProducts />
 		</main>
 	);
 }
