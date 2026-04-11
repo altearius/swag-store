@@ -2,6 +2,13 @@
   "name": "www",
   "license": "UNLICENSED",
   "type": "module",
+  "imports": {
+    "#api/*": {
+      "types": "./api/*.ts",
+      "default": "./api/*"
+    },
+    "#www/*": "./*"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",

@@ -1,6 +1,24 @@
 import createClient from '../createClient';
+import type { components } from '../openapi.yaml';
+
+type Promotion = components['schemas']['Promotion'];
 
 export default async function getActivePromotion() {
 	const client = createClient();
-	return client.GET('/promotions');
+	const result = await client.GET('/promotions');
+	return transform(result.data?.data);
+}
+
+function transform(promotion: Promotion | null | undefined) {
+	if (!promotion) {
+		return null;
+	}
+
+	const { validFrom, validUntil, ...rest } = promotion;
+
+	return {
+		...rest,
+		...(validFrom ? { validFrom: new Date(validFrom) } : {}),
+		...(validUntil ? { validUntil: new Date(validUntil) } : {}),
+	} as const;
 }

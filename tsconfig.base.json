@@ -9,6 +9,7 @@
 		// finished coding yet.
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
+		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true
 	}
 }
