@@ -9,12 +9,12 @@ export default function transformResult(result: Readable<Result> | undefined) {
 		return null;
 	}
 
-	const { data = [], ...rest } = result;
+	const { data: rawData = [], ...rest } = result;
 
-	return {
-		...rest,
-		data: Array.from(data).map(transformItem),
-	};
+	const data: readonly ReturnType<typeof transformItem>[] =
+		Array.from(rawData).map(transformItem);
+
+	return { ...rest, data } as const;
 }
 
 function transformItem(item: Readable<ResultItem>) {
@@ -40,5 +40,5 @@ function transformItem(item: Readable<ResultItem>) {
 		...(createdAt ? { createdAt } : {}),
 		...(images ? { images } : {}),
 		...(tags ? { tags } : {}),
-	};
+	} as const;
 }

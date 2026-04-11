@@ -1,10 +1,8 @@
-import type listProducts from '#api/products/listProducts';
-
-type ProductList = NonNullable<Awaited<ReturnType<typeof listProducts>>>;
-type Product = ProductList['data'][number];
+import type { Product as ProductModel } from '#api/products/listProducts';
+import Product from './product/Product';
 
 interface Props {
-	readonly products: readonly Product[];
+	readonly products: readonly ProductModel[];
 }
 
 export default function FeaturedProductsView(p: Props) {
@@ -18,7 +16,11 @@ export default function FeaturedProductsView(p: Props) {
 
 			<ol>
 				{p.products.map((product, idx) => {
-					return <li key={product.id ?? idx}>{product.name}</li>;
+					return (
+						<li key={product.id ?? idx}>
+							<Product product={product} />
+						</li>
+					);
 				})}
 			</ol>
 		</section>
