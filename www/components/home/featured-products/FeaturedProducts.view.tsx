@@ -11,7 +11,9 @@ interface Props {
 }
 
 export default function FeaturedProductsView(p: Props) {
-	const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+	const [emblaRef] = useEmblaCarousel({ loop: true }, [
+		Autoplay({ delay: 8000 }),
+	]);
 
 	if (p.products.length === 0) {
 		return null;
