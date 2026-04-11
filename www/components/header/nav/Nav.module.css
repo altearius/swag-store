@@ -1,0 +1,13 @@
+.nav {
+	ol {
+		display: flex;
+		list-style: none;
+		justify-content: space-around;
+	}
+
+	a,
+	span {
+		font-family: var(--font-noto);
+		text-decoration: none;
+	}
+}

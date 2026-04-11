@@ -1,7 +1,8 @@
 import localFont from 'next/font/local';
 
 const Orbitron = localFont({
-	src: './Orbitron-VariableFont_wght.ttf',
+	display: 'block',
+	src: 'Orbitron-VariableFont_wght.ttf',
 	variable: '--font-orbitron',
 });
 

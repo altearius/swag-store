@@ -2,5 +2,5 @@
 	font-family: var(--font-orbitron);
 	display: block;
 	text-decoration: none;
-	color: black;
+	color: var(--color-text);
 }

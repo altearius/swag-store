@@ -1,6 +1,8 @@
+import styles from './Nav.module.css';
+
 export default function Nav() {
 	return (
-		<nav>
+		<nav className={styles['nav']}>
 			<ol>
 				<li>
 					<a href="/">Home</a>
