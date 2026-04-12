@@ -1,13 +1,15 @@
+import style from './AddToCart.module.css';
+
 export default function AddToCartSkeleton() {
 	return (
-		<div>
+		<div className={style['add-to-cart']}>
 			<p>
 				In stock: <em>Loading...</em>
 			</p>
 
 			<p>
 				<label>
-					Quantity:
+					Quantity:{' '}
 					<input
 						name="quantity"
 						defaultValue="1"
@@ -17,9 +19,6 @@ export default function AddToCartSkeleton() {
 						type="number"
 					/>
 				</label>
-			</p>
-
-			<p>
 				<button type="submit" disabled>
 					Add to cart
 				</button>

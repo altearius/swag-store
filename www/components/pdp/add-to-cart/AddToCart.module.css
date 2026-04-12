@@ -1,0 +1,18 @@
+.add-to-cart {
+	font-family: var(--font-noto);
+
+	input[name='quantity'] {
+		text-align: right;
+		font-family: var(--font-noto);
+	}
+
+	button {
+		font-family: var(--font-noto);
+		padding-inline: 1rem;
+	}
+
+	p:last-child {
+		display: flex;
+		gap: 1rem;
+	}
+}
