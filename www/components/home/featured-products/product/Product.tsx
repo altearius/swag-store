@@ -22,8 +22,9 @@ export default function Product(p: Props) {
 					<Image
 						alt={p.product.name ?? ''}
 						fill
-						style={{ objectFit: 'contain' }}
+						sizes="(width >= 40rem) 20rem, calc(100vw - 2rem)"
 						src={imageSrc}
+						style={{ objectFit: 'contain' }}
 					/>
 				</div>
 			) : null}
