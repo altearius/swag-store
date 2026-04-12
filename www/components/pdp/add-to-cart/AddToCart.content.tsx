@@ -1,3 +1,5 @@
+'use client';
+
 import { use, useCallback } from 'react';
 import useCart from '../../../cart/useCart';
 import type { Props } from './AddToCart.props';

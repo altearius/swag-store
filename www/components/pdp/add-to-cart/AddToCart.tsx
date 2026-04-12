@@ -7,7 +7,7 @@ export default function AddToCart(p: Props) {
 	return (
 		<div>
 			<Suspense fallback={<AddToCartSkeleton />}>
-				<AddToCartContent stock={p.stock} />
+				<AddToCartContent {...p} />
 			</Suspense>
 		</div>
 	);
