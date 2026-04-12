@@ -29,7 +29,7 @@ export default function AddToCartContent(p: Props) {
 
 			<p>
 				<button type="submit" disabled={available === 0}>
-					Add to cart
+					Add to Cart
 				</button>
 			</p>
 		</form>
