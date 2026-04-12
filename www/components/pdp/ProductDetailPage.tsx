@@ -43,7 +43,7 @@ export default function ProductDetailPage(p: Props) {
 				</div>
 			) : null}
 
-			<AddToCart stock={p.stock} />
+			<AddToCart product={p.product} stock={p.stock} />
 		</main>
 	);
 }

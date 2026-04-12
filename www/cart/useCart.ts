@@ -8,7 +8,7 @@ import serialize from './lib/serialize';
 export default function useCart() {
 	const cart = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 	const addToCart = useCallback(addToCartFn.bind(null, cart), [cart]);
-	return { addToCart, cart };
+	return { addToCart, contents: cart };
 }
 
 export function setCart(cart: Cart) {
