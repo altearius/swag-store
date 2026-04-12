@@ -1,0 +1,5 @@
+.cart {
+	text-decoration: none;
+	font-family: var(--font-orbitron);
+	color: var(--color-text);
+}

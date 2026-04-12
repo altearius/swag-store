@@ -1,6 +1,9 @@
 'use client';
 
+import clsx from 'clsx';
+import Link from 'next/link';
 import useCart from '../../../cart/useCart';
+import style from './Cart.module.css';
 
 interface Props {
 	readonly className?: string | undefined;
@@ -11,8 +14,8 @@ export default function Cart(p: Props) {
 	const itemCount = contents?.totalItems ?? 0;
 
 	return (
-		<span className={p.className}>
-			🛒{itemCount > 0 ? <span className="item-count">{itemCount}</span> : null}
-		</span>
+		<Link href="/cart" className={clsx(style['cart'], p.className)}>
+			🛒 {itemCount.toLocaleString()}
+		</Link>
 	);
 }
