@@ -1,6 +1,8 @@
 import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
 
+export type Stock = NonNullable<Awaited<ReturnType<typeof getStock>>>;
+
 export default async function getStock(slug: string) {
 	'use cache';
 	cacheLife('seconds');

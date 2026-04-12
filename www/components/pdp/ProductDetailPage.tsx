@@ -1,12 +1,13 @@
-import type getProductDetail from '#api/products/getProductDetail';
+import type { Product } from '#api/products/getProductDetail';
+import type { Stock as StockModel } from '#api/stock/getStock';
 import formatPrice from '#lib/formatPrice';
 import Image from 'next/image';
 import style from './ProductDetailPage.module.css';
-
-type Product = NonNullable<Awaited<ReturnType<typeof getProductDetail>>>;
+import Stock from './stock/Stock';
 
 interface Props {
 	readonly product: Product;
+	readonly stock: Promise<StockModel | null>;
 }
 
 export default function ProductDetailPage(p: Props) {
@@ -41,6 +42,8 @@ export default function ProductDetailPage(p: Props) {
 					{hasPrice ? <p>{formatPrice(price, currency)}</p> : null}
 				</div>
 			) : null}
+
+			<Stock stock={p.stock} />
 		</main>
 	);
 }
