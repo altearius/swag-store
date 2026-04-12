@@ -32,6 +32,7 @@ export default function ProductDetailPage(p: Props) {
 						alt={name ?? 'Product image'}
 						fill
 						style={{ objectFit: 'contain' }}
+						loading="eager"
 					/>
 				</div>
 			) : null}
