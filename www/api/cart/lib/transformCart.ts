@@ -14,14 +14,19 @@ export default function transformCart(
 		return null;
 	}
 
-	const { items: rawItems, createdAt, updatedAt, ...rest } = data;
+	const { items: rawItems = [], createdAt, updatedAt, ...rest } = data;
+
+	type TransformedItem = ReturnType<typeof transformItem>;
+
+	const items: readonly TransformedItem[] =
+		Array.from(rawItems).map(transformItem);
 
 	return {
 		...rest,
 		...(createdAt ? { createdAt: new Date(createdAt) } : {}),
 		...(updatedAt ? { updatedAt: new Date(updatedAt) } : {}),
-		items: Array.from(rawItems ?? []).map(transformItem),
-	};
+		items,
+	} as const;
 }
 
 function transformItem(item: Readable<Item>) {
@@ -31,5 +36,5 @@ function transformItem(item: Readable<Item>) {
 		...rest,
 		...(addedAt ? { addedAt: new Date(addedAt) } : {}),
 		...(product ? { product: transformProduct(product) } : {}),
-	};
+	} as const;
 }
