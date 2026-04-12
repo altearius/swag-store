@@ -28,7 +28,7 @@ export default function Product(p: Props) {
 				</div>
 			) : null}
 
-			{name && hasPrice ? (
+			{name || hasPrice ? (
 				<div className={styles['detail']}>
 					{name ? <h3>{p.product.name}</h3> : null}
 					{hasPrice ? <p>{formatPrice(price, currency)}</p> : null}

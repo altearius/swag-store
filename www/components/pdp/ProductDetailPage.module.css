@@ -1,0 +1,27 @@
+.product-detail-page {
+	padding-top: 1rem;
+
+	h1 {
+		font-family: var(--font-orbitron);
+	}
+
+	max-width: var(--layout-max-width);
+	margin: 0 auto;
+	width: 100%;
+}
+
+.image {
+	position: relative;
+	height: calc(100vw - 2rem);
+	width: 100%;
+}
+
+.detail {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+
+	p {
+		font-family: var(--font-noto);
+	}
+}
