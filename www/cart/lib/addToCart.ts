@@ -1,14 +1,13 @@
-import type { Cart } from '#api/api.types';
 import addToCartApi from '#api/cart/addToCart';
 import { saveCart } from './CartStore';
 
 export default async function addToCart(
-	cart: Cart | undefined,
+	cartToken: string | undefined,
 	productId: string,
 	quantity: number,
 ) {
 	const updatedCart = await addToCartApi(
-		cart?.token || null,
+		cartToken || null,
 		productId,
 		quantity,
 	);

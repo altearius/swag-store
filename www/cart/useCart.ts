@@ -4,7 +4,8 @@ import { loadCart, StorageKey } from './lib/CartStore';
 
 export default function useCart() {
 	const cart = useSyncExternalStore(subscribe, loadCart, getServerSnapshot);
-	const addToCart = useCallback(addToCartFn.bind(null, cart), [cart]);
+	const token = cart?.token;
+	const addToCart = useCallback(addToCartFn.bind(null, token), [token]);
 	return { addToCart, contents: cart };
 }
 
