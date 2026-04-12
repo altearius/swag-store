@@ -1,5 +1,4 @@
-import type { Product } from '#api/products/getProductDetail';
-import type { Stock as StockModel } from '#api/stock/getStock';
+import type { Product, Stock } from '#api/api.types';
 import formatPrice from '#lib/formatPrice';
 import Image from 'next/image';
 import style from './ProductDetailPage.module.css';
@@ -7,7 +6,7 @@ import AddToCart from './add-to-cart/AddToCart';
 
 interface Props {
 	readonly product: Product;
-	readonly stock: Promise<StockModel | null>;
+	readonly stock: Promise<Stock | null>;
 }
 
 export default function ProductDetailPage(p: Props) {

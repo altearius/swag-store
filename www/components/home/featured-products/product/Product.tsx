@@ -1,4 +1,4 @@
-import type { Product as ProductModel } from '#api/products/listProducts';
+import type { Product as ProductModel } from '#api/api.types';
 import formatPrice from '#lib/formatPrice';
 import Image from 'next/image';
 import Link from 'next/link';

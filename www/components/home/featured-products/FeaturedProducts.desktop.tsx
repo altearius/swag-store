@@ -1,4 +1,4 @@
-import type { Product as ProductModel } from '#api/products/listProducts';
+import type { Product as ProductModel } from '#api/api.types';
 import styles from './FeaturedProducts.module.css';
 import Product from './product/Product';
 

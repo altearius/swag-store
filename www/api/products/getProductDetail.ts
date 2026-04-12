@@ -1,8 +1,6 @@
 import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
-import transformProduct from './lib/transformProduct';
-
-export type Product = ReturnType<typeof transformProduct>;
+import transformProduct from '../lib/transformProduct';
 
 export default async function getProductDetail(slug: string) {
 	'use cache';

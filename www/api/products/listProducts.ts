@@ -6,9 +6,6 @@ import transformResult from './lib/transformResult';
 
 type Query = NonNullable<operations['listProducts']['parameters']['query']>;
 
-export type ProductList = NonNullable<Awaited<ReturnType<typeof listProducts>>>;
-export type Product = ProductList['data'][number];
-
 export interface Options {
 	readonly category?: Query['category'] | undefined;
 	readonly featured?: boolean;

@@ -1,6 +1,6 @@
 'use client';
 
-import type { Product as ProductModel } from '#api/products/listProducts';
+import type { Product as ProductModel } from '#api/api.types';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from './FeaturedProducts.module.css';
