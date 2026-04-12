@@ -24,7 +24,7 @@ export default function transformCart(
 	return {
 		...rest,
 		...(createdAt ? { createdAt: new Date(createdAt) } : {}),
-		...(updatedAt ? { updatedAt: new Date(updatedAt) } : {}),
+		updatedAt: new Date(updatedAt ?? Date.now()),
 		items,
 	} as const;
 }

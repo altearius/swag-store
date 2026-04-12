@@ -14,6 +14,10 @@ export default function parse(raw: string): Cart {
 		throw new Error('Invalid cart items');
 	}
 
+	if (typeof updatedAt !== 'string') {
+		throw new Error('Invalid cart updatedAt');
+	}
+
 	return {
 		...rest,
 
@@ -21,10 +25,7 @@ export default function parse(raw: string): Cart {
 			? { createdAt: new Date(createdAt) }
 			: {}),
 
-		...(typeof updatedAt === 'string'
-			? { updatedAt: new Date(updatedAt) }
-			: {}),
-
+		updatedAt: new Date(updatedAt),
 		items: items.map(transformItem),
 	};
 }

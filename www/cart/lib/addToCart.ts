@@ -1,7 +1,6 @@
 import type { Cart } from '#api/api.types';
 import addToCartApi from '#api/cart/addToCart';
-import { CartKey } from './CartKey';
-import serialize from './serialize';
+import { saveCart } from './CartStore';
 
 export default async function addToCart(
 	cart: Cart | undefined,
@@ -18,5 +17,5 @@ export default async function addToCart(
 		throw new Error('Failed to add item to cart');
 	}
 
-	window.sessionStorage.setItem(CartKey, serialize(updatedCart));
+	saveCart(updatedCart);
 }
