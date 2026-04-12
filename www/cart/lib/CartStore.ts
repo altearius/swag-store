@@ -5,11 +5,11 @@ import serialize from './serialize';
 export const StorageKey = 'www.cart.lib.CartStore';
 let snapshot: Cart | undefined;
 
-export function loadCart(): Cart | undefined {
+export function loadCart(): Cart | null {
 	const raw = window.sessionStorage.getItem(StorageKey);
 
 	if (!raw) {
-		return undefined;
+		return null;
 	}
 
 	const cart = parse(raw);

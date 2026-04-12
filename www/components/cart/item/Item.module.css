@@ -1,0 +1,26 @@
+.item {
+	display: flex;
+	gap: 1rem;
+
+	/* image container */
+	> div:first-child {
+		position: relative;
+		width: 100px;
+		height: 100px;
+	}
+
+	/* details container */
+	> div:last-child {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		h3 {
+			font-family: var(--font-orbitron);
+		}
+
+		p {
+			font-family: var(--font-noto);
+		}
+	}
+}

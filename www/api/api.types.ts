@@ -5,3 +5,4 @@ import type getStock from './stock/getStock';
 export type Product = ReturnType<typeof transformProduct>;
 export type Stock = NonNullable<Awaited<ReturnType<typeof getStock>>>;
 export type Cart = NonNullable<ReturnType<typeof transformCart>>;
+export type CartItem = Cart['items'][number];

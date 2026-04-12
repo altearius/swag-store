@@ -1,3 +1,13 @@
+'use client';
+
+import style from './Cart.module.css';
+import Contents from './contents/Contents';
+
 export default function CartPage() {
-	return <p>Cart Page</p>;
+	return (
+		<main className={style['cart-page']}>
+			<h2>Cart Contents</h2>
+			<Contents />
+		</main>
+	);
 }

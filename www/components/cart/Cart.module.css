@@ -1,0 +1,10 @@
+.cart-page {
+	max-width: var(--layout-max-width);
+	width: 100%;
+	margin: 0 auto;
+
+	> h2 {
+		margin-top: 1rem;
+		font-family: var(--font-orbitron);
+	}
+}
