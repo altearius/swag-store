@@ -3,7 +3,7 @@ import type { Stock as StockModel } from '#api/stock/getStock';
 import formatPrice from '#lib/formatPrice';
 import Image from 'next/image';
 import style from './ProductDetailPage.module.css';
-import Stock from './stock/Stock';
+import AddToCart from './add-to-cart/AddToCart';
 
 interface Props {
 	readonly product: Product;
@@ -43,7 +43,7 @@ export default function ProductDetailPage(p: Props) {
 				</div>
 			) : null}
 
-			<Stock stock={p.stock} />
+			<AddToCart stock={p.stock} />
 		</main>
 	);
 }
