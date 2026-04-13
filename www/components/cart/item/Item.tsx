@@ -22,10 +22,14 @@ export default function Item(p: Props) {
 				throw new Error('Product ID is required to add to cart');
 			}
 
-			await updateQuantity(
-				productId,
-				parseQuantity(formData.get('quantity') ?? '0'),
-			);
+			const actionType = formData.get('actionType');
+
+			const quantity =
+				actionType === 'remove'
+					? 0
+					: parseQuantity(formData.get('quantity') ?? '0');
+
+			await updateQuantity(productId, quantity);
 		},
 		[updateQuantity, productId],
 	);
@@ -56,7 +60,12 @@ export default function Item(p: Props) {
 							step={1}
 						/>
 					</label>
-					<button type="submit">Save</button>
+					<button name="actionType" type="submit" value="save">
+						Save
+					</button>
+					<button name="actionType" type="submit" value="remove">
+						Remove
+					</button>
 				</p>
 				<p>
 					{(p.item.quantity ?? 0).toLocaleString()}
