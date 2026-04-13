@@ -1,9 +1,9 @@
 import type { CartItem } from '#api/api.types';
+import useCart from '#cart/useCart';
 import formatPrice from '#lib/formatPrice';
 import parseQuantity from '#lib/parseQuantity';
 import Image from 'next/image';
 import { useCallback } from 'react';
-import useCart from '../../../cart/useCart';
 import style from './Item.module.css';
 
 interface Props {

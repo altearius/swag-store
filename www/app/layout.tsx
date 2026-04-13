@@ -1,10 +1,10 @@
 import type { StoreConfiguration } from '#api/api.types';
+import Footer from '#c/footer/Footer';
+import Header from '#c/header/Header';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import getStoreConfiguration from '../api/store/getStoreConfiguration';
-import Footer from '../components/footer/Footer';
-import Header from '../components/header/Header';
 import Noto from '../style/fonts/Noto';
 import Orbitron from '../style/fonts/Orbiton';
 import '../style/global.css';

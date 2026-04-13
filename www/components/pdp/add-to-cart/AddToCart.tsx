@@ -1,11 +1,11 @@
 'use client';
 
 import type { Product } from '#api/api.types';
+import useCart from '#cart/useCart';
 import parseQuantity from '#lib/parseQuantity';
 import useStock from '#lib/useStock';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
-import useCart from '../../../cart/useCart';
 import style from './AddToCart.module.css';
 
 interface Props {

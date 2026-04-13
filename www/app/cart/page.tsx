@@ -1,9 +1,9 @@
 import type { StoreConfiguration } from '#api/api.types';
 import getStoreConfiguration from '#api/store/getStoreConfiguration';
+import CartPage from '#c/cart/Cart';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
 import { cacheLife } from 'next/cache';
-import CartPage from '../../components/cart/Cart';
 
 // I see the "Cart Functionality" description does _not_ have a Route associated
 // with it. I think that implies that I could make this into a dialog or modal

@@ -1,4 +1,4 @@
-import Home from '../components/home/Home';
+import Home from '#c/home/Home';
 
 export default async function Page() {
 	'use cache';

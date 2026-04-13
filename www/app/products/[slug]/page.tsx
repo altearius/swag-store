@@ -2,11 +2,11 @@ import type { Product, StoreConfiguration } from '#api/api.types';
 import getProductDetail from '#api/products/getProductDetail';
 import listProducts from '#api/products/listProducts';
 import getStoreConfiguration from '#api/store/getStoreConfiguration';
+import ProductDetailPage from '#c/pdp/ProductDetailPage';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
 import { cacheLife } from 'next/cache';
 import { notFound } from 'next/navigation';
-import ProductDetailPage from '../../../components/pdp/ProductDetailPage';
 
 export default async function Page(p: PageProps<'/products/[slug]'>) {
 	'use cache';

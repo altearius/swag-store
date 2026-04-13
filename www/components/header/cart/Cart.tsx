@@ -1,8 +1,8 @@
 'use client';
 
+import useCart from '#cart/useCart';
 import clsx from 'clsx';
 import Link from 'next/link';
-import useCart from '../../../cart/useCart';
 import style from './Cart.module.css';
 
 interface Props {

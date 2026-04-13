@@ -1,5 +1,5 @@
-import useCart from '../../../cart/useCart';
-import formatPrice from '../../../lib/formatPrice';
+import useCart from '#cart/useCart';
+import formatPrice from '#lib/formatPrice';
 import style from './Total.module.css';
 
 export default function Total() {

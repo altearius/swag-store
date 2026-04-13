@@ -1,5 +1,5 @@
 import type { CartItem } from '#api/api.types';
-import useCart from '../../../cart/useCart';
+import useCart from '#cart/useCart';
 import Item from '../item/Item';
 import style from './Contents.module.css';
 
