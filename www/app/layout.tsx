@@ -1,7 +1,7 @@
+import type { StoreConfiguration } from '#api/api.types';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import type { StoreConfiguration } from '../api/store/getStoreConfiguration';
 import getStoreConfiguration from '../api/store/getStoreConfiguration';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-function transformMetadata(config: StoreConfiguration): Metadata {
+function transformMetadata(config: StoreConfiguration | null): Metadata {
 	const seo = config?.seo;
 
 	const { defaultTitle: title, defaultDescription: description } = seo ?? {};

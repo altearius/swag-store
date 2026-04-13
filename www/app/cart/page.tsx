@@ -1,3 +1,7 @@
+import type { StoreConfiguration } from '#api/api.types';
+import getStoreConfiguration from '#api/store/getStoreConfiguration';
+import formatPageTitle from '#lib/formatPageTitle';
+import type { Metadata } from 'next';
 import CartPage from '../../components/cart/Cart';
 
 // I see the "Cart Functionality" description does _not_ have a Route associated
@@ -7,4 +11,19 @@ import CartPage from '../../components/cart/Cart';
 
 export default function Page() {
 	return <CartPage />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+	'use cache';
+
+	const config = await getStoreConfiguration();
+	return transformMetadata(config);
+}
+
+function transformMetadata(config: StoreConfiguration | null): Metadata {
+	return {
+		// search engines should not index a cart
+		robots: { index: false },
+		title: formatPageTitle(config, 'Cart'),
+	};
 }

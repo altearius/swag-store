@@ -3,11 +3,16 @@ import type listAllCategories from './categories/listAllCategories';
 import type transformProduct from './lib/transformProduct';
 import type { operations } from './openapi.yaml';
 import type getStock from './stock/getStock';
+import type getStoreConfiguration from './store/getStoreConfiguration';
 
 export type Product = ReturnType<typeof transformProduct>;
 export type Stock = NonNullable<Awaited<ReturnType<typeof getStock>>>;
 export type Cart = NonNullable<ReturnType<typeof transformCart>>;
 export type CartItem = Cart['items'][number];
+
+export type StoreConfiguration = NonNullable<
+	Awaited<ReturnType<typeof getStoreConfiguration>>
+>;
 
 type Query = NonNullable<operations['listProducts']['parameters']['query']>;
 export type ProductListCategory = NonNullable<Query['category']>;

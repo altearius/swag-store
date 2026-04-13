@@ -12,6 +12,12 @@ export default async function addToCart(
 
 	const token = cartToken ?? (await createCart(client));
 
+	// I do not see any indiciation in the requirements or API documentation that
+	// the client should be responsible for validating the quantity against the
+	// real-time stock level at this point. My assumption is that the API will
+	// return accept any quantity for the purpose of the cart and validate the
+	// stock level only at checkout.
+
 	const result = await client.POST('/cart', {
 		body: { productId, quantity },
 		params: { header: { 'x-cart-token': token } },

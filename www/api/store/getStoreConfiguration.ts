@@ -8,7 +8,3 @@ export default async function getStoreConfiguration() {
 	const result = await client.GET('/store/config');
 	return result.data?.data ?? null;
 }
-
-export type StoreConfiguration = Awaited<
-	ReturnType<typeof getStoreConfiguration>
->;

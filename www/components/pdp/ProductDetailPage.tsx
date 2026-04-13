@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import style from './ProductDetailPage.module.css';
 import AddToCart from './add-to-cart/AddToCart';
+import Meta from './meta/Meta';
 
 interface Props {
 	readonly product: Product;
@@ -45,6 +46,7 @@ export default function ProductDetailPage(p: Props) {
 			) : null}
 
 			<AddToCart product={p.product} stock={p.stock} />
+			<Meta product={p.product} />
 		</main>
 	);
 }
