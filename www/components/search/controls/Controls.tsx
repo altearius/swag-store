@@ -16,26 +16,10 @@ export default function Controls(p: Props) {
 	const router = useRouter();
 
 	const action = useCallback((formData: FormData) => {
-		const search = formData.get('search');
-		const category = formData.get('category');
 		const params = new URLSearchParams();
-
-		if (typeof search === 'string') {
-			const parsed = search.trim();
-
-			if (parsed) {
-				params.set('search', parsed);
-			}
-		}
-
-		if (typeof category === 'string') {
-			const parsed = category.trim();
-
-			if (parsed) {
-				params.set('category', parsed);
-			}
-		}
-
+		const bind = bindString.bind(null, formData, params);
+		bind('search');
+		bind('category');
 		router.push(`?${params.toString()}`);
 	}, []);
 
@@ -59,4 +43,16 @@ export default function Controls(p: Props) {
 			</p>
 		</form>
 	);
+}
+
+function bindString(from: FormData, to: URLSearchParams, key: string) {
+	const value = from.get(key);
+
+	if (typeof value === 'string') {
+		const parsed = value.trim();
+
+		if (parsed) {
+			to.set(key, parsed);
+		}
+	}
 }
