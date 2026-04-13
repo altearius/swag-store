@@ -2,6 +2,7 @@ import type { CartItem } from '#api/api.types';
 import useCart from '#cart/useCart';
 import formatPrice from '#lib/formatPrice';
 import parseQuantity from '#lib/parseQuantity';
+import routeProduct from '#lib/routeProduct';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback } from 'react';
@@ -17,6 +18,7 @@ export default function Item(p: Props) {
 	const currency = p.item.product?.currency ?? 'USD';
 	const productId = p.item.productId ?? p.item.product?.id;
 	const name = p.item.product?.name ?? 'Unknown Product';
+	const route = routeProduct(p.item.product) ?? '/search';
 
 	const action = useCallback(
 		async (formData: FormData) => {
@@ -38,7 +40,7 @@ export default function Item(p: Props) {
 
 	return (
 		<div className={style['item']}>
-			<Link href={`/products/${productId}`}>
+			<Link href={route}>
 				{image ? (
 					<Image
 						alt={name}
@@ -51,7 +53,7 @@ export default function Item(p: Props) {
 			</Link>
 			<form action={action}>
 				<h3>
-					<Link href={`/products/${productId}`}>{name}</Link>
+					<Link href={route}>{name}</Link>
 				</h3>
 				<p>
 					{(p.item.quantity ?? 0).toLocaleString()}
