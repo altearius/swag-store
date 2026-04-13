@@ -1,13 +1,16 @@
+import type { Categories } from '#api/api.types';
+import type { Ref } from 'react';
 import { Suspense, useImperativeHandle, useRef } from 'react';
 import { List } from './List';
-import type { Props as BaseProps } from './Props';
+import style from './Modal.module.css';
 
 export interface Handle {
 	open: () => void;
 }
 
-interface Props extends BaseProps {
-	readonly ref?: React.Ref<Handle>;
+interface Props {
+	readonly categories: Promise<Categories>;
+	readonly ref?: Ref<Handle>;
 }
 
 export default function Modal(p: Props) {
@@ -20,8 +23,8 @@ export default function Modal(p: Props) {
 	}));
 
 	return (
-		<dialog closedby="any" ref={dialogRef}>
-			<p>Category modal</p>
+		<dialog closedby="any" ref={dialogRef} className={style['modal']}>
+			<h2>Category</h2>
 
 			<Suspense fallback={<p>Loading categories...</p>}>
 				<List categories={p.categories} />

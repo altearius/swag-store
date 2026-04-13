@@ -1,5 +1,10 @@
+import type { Categories } from '#api/api.types';
 import { use } from 'react';
-import type { Props } from './Props';
+import style from './List.module.css';
+
+interface Props {
+	readonly categories: Promise<Categories>;
+}
 
 export function List(p: Props) {
 	const categories = use(p.categories);
@@ -9,7 +14,7 @@ export function List(p: Props) {
 	);
 
 	return (
-		<ul>
+		<ul className={style['list']}>
 			{sorted.map(([slug, { name }]) => (
 				<li key={slug}>{name}</li>
 			))}

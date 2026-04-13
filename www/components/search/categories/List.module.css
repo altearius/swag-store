@@ -1,0 +1,8 @@
+.list {
+	list-style: none;
+
+	li {
+		font-family: var(--font-noto);
+		margin-bottom: 0.5rem;
+	}
+}
