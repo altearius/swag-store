@@ -2,6 +2,7 @@
 	background-color: var(--color-inverse-bg);
 	color: var(--color-inverse);
 	padding: 1rem;
+	margin-bottom: 2rem;
 
 	h2 {
 		font-family: var(--font-orbitron);

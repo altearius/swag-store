@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import styles from './Hero.module.css';
 
@@ -7,7 +8,7 @@ import styles from './Hero.module.css';
 
 export default function Hero() {
 	return (
-		<section className={styles['hero']}>
+		<section className={clsx(styles['hero'], 'layout-max-width')}>
 			<h1>Welcome to the Swag Store</h1>
 
 			<p>
