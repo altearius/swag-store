@@ -1,8 +1,29 @@
 .product-detail-page {
 	padding-top: 1rem;
+	display: grid;
+	gap: 1rem;
+	grid-template:
+		'title' auto
+		'image' auto
+		'description' auto
+		'price' auto
+		'add-to-cart' auto / 1fr;
 
 	h1 {
 		font-family: var(--font-orbitron);
+		grid-area: title;
+	}
+
+	p {
+		font-family: var(--font-noto);
+	}
+
+	@media (width >= 40rem) {
+		grid-template:
+			'image title' auto
+			'image description' auto
+			'image price' auto
+			'image add-to-cart' auto / 20rem 1fr;
 	}
 }
 
@@ -10,15 +31,22 @@
 	position: relative;
 	height: calc(100vw - 2rem);
 	width: 100%;
+	grid-area: image;
+
+	@media (width >= 40rem) {
+		height: 20rem;
+		width: 20rem;
+	}
 }
 
-.detail {
-	display: flex;
-	justify-content: space-between;
-	gap: 1rem;
-	margin-bottom: 1rem;
+.description {
+	grid-area: description;
+}
 
-	p {
-		font-family: var(--font-noto);
-	}
+.price {
+	grid-area: price;
+}
+
+.add-to-cart {
+	grid-area: add-to-cart;
 }

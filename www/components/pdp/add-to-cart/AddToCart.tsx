@@ -4,11 +4,13 @@ import type { Product } from '#api/api.types';
 import useCart from '#cart/useCart';
 import parseQuantity from '#lib/parseQuantity';
 import useStock from '#lib/useStock';
+import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import style from './AddToCart.module.css';
 
 interface Props {
+	readonly className?: string | undefined;
 	readonly product: Product;
 }
 
@@ -37,10 +39,9 @@ export default function AddToCart(p: Props) {
 	);
 
 	return (
-		<form action={action} className={style['add-to-cart']}>
+		<form action={action} className={clsx(style['add-to-cart'], p.className)}>
 			<p>
-				In stock:
-				{loading ? <em>Loading...</em> : available.toLocaleString()}
+				In stock: {loading ? <em>Loading...</em> : available.toLocaleString()}
 				{!disabled && stock?.lowStock === true ? ' (Act now!)' : ''}
 			</p>
 
@@ -54,7 +55,7 @@ export default function AddToCart(p: Props) {
 						defaultValue="1"
 						required
 						step="1"
-						{...(disabled ? { disabled } : { max: available })}
+						{...(disabled ? { disabled, max: 1 } : { max: available })}
 					/>
 				</label>
 				<button type="submit" disabled={disabled}>

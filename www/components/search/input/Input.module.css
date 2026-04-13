@@ -1,3 +1,9 @@
 .input {
 	font-family: var(--font-noto);
+
+	> input {
+		width: 100%;
+		font-family: var(--font-noto);
+		font-size: 1rem;
+	}
 }

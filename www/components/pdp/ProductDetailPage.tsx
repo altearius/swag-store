@@ -22,31 +22,34 @@ export default function ProductDetailPage(p: Props) {
 	const hasPrice = typeof price === 'number';
 
 	return (
-		<main className={clsx(style['product-detail-page'], 'layout-max-width')}>
-			{name ? <h1>{name}</h1> : null}
+		<>
+			<main className={clsx(style['product-detail-page'], 'layout-max-width')}>
+				{name ? <h1>{name}</h1> : null}
 
-			{image ? (
-				<div className={style['image']}>
-					<Image
-						src={image}
-						alt={name ?? 'Product image'}
-						fill
-						style={{ objectFit: 'contain' }}
-						loading="eager"
-					/>
-				</div>
-			) : null}
+				{image ? (
+					<div className={style['image']}>
+						<Image
+							src={image}
+							alt={name ?? 'Product image'}
+							fill
+							style={{ objectFit: 'contain' }}
+							sizes="(width >= 40rem) 20rem, 100%"
+							loading="eager"
+						/>
+					</div>
+				) : null}
 
-			{description || hasPrice ? (
-				<div className={style['detail']}>
-					{description ? <p>{description}</p> : null}
-					{hasPrice ? <p>{formatPrice(price, currency)}</p> : null}
-				</div>
-			) : null}
+				{description ? (
+					<p className={style['description']}>{description}</p>
+				) : null}
 
-			<AddToCart {...p} />
+				{hasPrice ? (
+					<p className={style['price']}>{formatPrice(price, currency)}</p>
+				) : null}
 
+				<AddToCart {...p} className={style['add-to-cart']} />
+			</main>
 			<Meta {...p} />
-		</main>
+		</>
 	);
 }

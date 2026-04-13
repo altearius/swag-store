@@ -3,6 +3,7 @@ import useCart from '#cart/useCart';
 import formatPrice from '#lib/formatPrice';
 import parseQuantity from '#lib/parseQuantity';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback } from 'react';
 import style from './Item.module.css';
 
@@ -15,6 +16,7 @@ export default function Item(p: Props) {
 	const image = p.item.product?.images?.[0];
 	const currency = p.item.product?.currency ?? 'USD';
 	const productId = p.item.productId ?? p.item.product?.id;
+	const name = p.item.product?.name ?? 'Unknown Product';
 
 	const action = useCallback(
 		async (formData: FormData) => {
@@ -36,22 +38,30 @@ export default function Item(p: Props) {
 
 	return (
 		<div className={style['item']}>
-			<div>
+			<Link href={`/products/${productId}`}>
 				{image ? (
 					<Image
-						alt={p.item.product.name ?? ''}
+						alt={name}
 						fill
 						src={image}
 						sizes="100px"
 						style={{ objectFit: 'contain' }}
 					/>
 				) : null}
-			</div>
+			</Link>
 			<form action={action}>
-				<h3>{p.item.product?.name}</h3>
+				<h3>
+					<Link href={`/products/${productId}`}>{name}</Link>
+				</h3>
+				<p>
+					{(p.item.quantity ?? 0).toLocaleString()}
+					&times; {formatPrice(p.item.product?.price ?? 0, currency)} ={' '}
+					{formatPrice(p.item.lineTotal ?? 0, currency)}
+				</p>
 				<p>
 					<label>
-						Update Quantity:{' '}
+						Update Quantity:
+						<br />
 						<input
 							type="number"
 							name="quantity"
@@ -66,11 +76,6 @@ export default function Item(p: Props) {
 					<button name="actionType" type="submit" value="remove">
 						Remove
 					</button>
-				</p>
-				<p>
-					{(p.item.quantity ?? 0).toLocaleString()}
-					&times; {formatPrice(p.item.product?.price ?? 0, currency)} ={' '}
-					{formatPrice(p.item.lineTotal ?? 0, currency)}
 				</p>
 			</form>
 		</div>

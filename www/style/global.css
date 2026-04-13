@@ -12,8 +12,7 @@
 	--layout-max-width: min(calc(100vw - 2rem), 1200px);
 }
 
-span.button,
-a.button {
+.button {
 	background-color: var(--color-inverse-bg);
 	border-radius: 20px;
 	color: var(--color-inverse);
