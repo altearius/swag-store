@@ -1,0 +1,18 @@
+.pagination {
+	font-family: var(--font-noto);
+	margin-bottom: 2rem;
+
+	p {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/*
+	stylelint-disable-next-line selector-pseudo-class-no-unknown -- CSS module
+	*/
+	:global(.button) {
+		padding: 0 1rem;
+	}
+}

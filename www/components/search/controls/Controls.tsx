@@ -20,6 +20,11 @@ export default function Controls(p: Props) {
 		const bind = bindString.bind(null, formData, params);
 		bind('search');
 		bind('category');
+
+		// Changing search/category is intentionally decoupled from pagination.
+		// The intent is that changing the search parameters should reset
+		// pagination.
+
 		router.push(`?${params.toString()}`);
 	}, []);
 
