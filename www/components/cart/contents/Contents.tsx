@@ -5,16 +5,13 @@ import style from './Contents.module.css';
 
 export default function Contents() {
 	const { contents } = useCart();
+	const items = contents?.items;
 
-	if (contents === undefined) {
-		return <p>Loading...</p>;
+	if (!items || items.length === 0) {
+		return;
 	}
 
-	if (contents === null || (contents.totalItems ?? 0) === 0) {
-		return <p>Your cart is empty.</p>;
-	}
-
-	const sortedItems = [...contents.items].sort(sortItems);
+	const sortedItems = [...items].sort(sortItems);
 
 	return (
 		<ul className={style['contents']}>
