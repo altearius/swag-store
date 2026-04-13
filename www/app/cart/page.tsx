@@ -2,6 +2,7 @@ import type { StoreConfiguration } from '#api/api.types';
 import getStoreConfiguration from '#api/store/getStoreConfiguration';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import CartPage from '../../components/cart/Cart';
 
 // I see the "Cart Functionality" description does _not_ have a Route associated
@@ -9,7 +10,10 @@ import CartPage from '../../components/cart/Cart';
 // or something. I personally don't like modals very much so I'm going with a
 // dedicated page for it instead.
 
-export default function Page() {
+export default async function Page() {
+	'use cache';
+	cacheLife('days');
+
 	return <CartPage />;
 }
 
