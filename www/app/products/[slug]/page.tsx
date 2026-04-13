@@ -1,13 +1,16 @@
 import type { Product, StoreConfiguration } from '#api/api.types';
 import getProductDetail from '#api/products/getProductDetail';
+import listProducts from '#api/products/listProducts';
 import getStoreConfiguration from '#api/store/getStoreConfiguration';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import { notFound } from 'next/navigation';
 import ProductDetailPage from '../../../components/pdp/ProductDetailPage';
 
 export default async function Page(p: PageProps<'/products/[slug]'>) {
 	'use cache';
+	cacheLife('hours');
 
 	const { slug } = await p.params;
 	const product = await getProductDetail(slug);
@@ -23,6 +26,7 @@ export async function generateMetadata(
 	p: PageProps<'/products/[slug]'>,
 ): Promise<Metadata> {
 	'use cache';
+	cacheLife('hours');
 
 	const [config, product] = await Promise.all([
 		getStoreConfiguration(),
@@ -54,4 +58,15 @@ function transformMetadata(
 
 		title: formatPageTitle(config, product.name ?? 'Product Detail'),
 	};
+}
+
+export async function generateStaticParams() {
+	const featured = await listProducts({ featured: true, limit: 6 });
+
+	return (
+		featured?.data
+			.map((product) => product.slug)
+			.filter((x): x is NonNullable<typeof x> => Boolean(x))
+			.map((slug) => ({ slug })) ?? []
+	);
 }
