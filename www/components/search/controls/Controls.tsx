@@ -23,6 +23,10 @@ export default function Controls(p: Props) {
 		router.push(`?${params.toString()}`);
 	}, []);
 
+	const onTypeahead = useCallback(() => {
+		formRef.current?.requestSubmit();
+	}, []);
+
 	return (
 		<form
 			className={style['controls']}
@@ -31,7 +35,7 @@ export default function Controls(p: Props) {
 			action={action}
 		>
 			<p>
-				<Input />
+				<Input onTypeahead={onTypeahead} />
 			</p>
 
 			<p>

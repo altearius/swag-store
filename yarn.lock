@@ -1089,6 +1089,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debounce@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "debounce@npm:3.0.0"
+  checksum: 10c0/bfae14dbdd98c57f2ed6e3f91f8086fe5a64624ddf54d0a55e038069ae47aa90ba305be98c29199b611955bbf9c3309bf07caf7f1ab55fe90928396fb9318c5a
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:^4.4.3":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
@@ -1138,7 +1145,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"embla-carousel@npm:8.6.0":
+"embla-carousel@npm:8.6.0, embla-carousel@npm:^8.6.0":
   version: 8.6.0
   resolution: "embla-carousel@npm:8.6.0"
   checksum: 10c0/f4c598e7be28b70340d31ffd2bebb2472db370b0c81d9b089bf9555cf618695f35dc4a0694565c994c9ab972731123063f945aa09ff485df0df761d79c6a08ef
@@ -2437,6 +2444,8 @@ __metadata:
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
     clsx: "npm:^2.1.1"
+    debounce: "npm:^3.0.0"
+    embla-carousel: "npm:^8.6.0"
     embla-carousel-autoplay: "npm:^8.6.0"
     embla-carousel-react: "npm:^8.6.0"
     next: "npm:^16.2.3"
