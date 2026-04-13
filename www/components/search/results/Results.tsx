@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
+import search from '../lib/search';
 import Result from '../result/Result';
 import style from './Results.module.css';
-import search from './lib/search';
 
 interface Props {
 	readonly searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function Results(p: Props) {
+export default function Results(p: Props) {
 	return (
 		<section className={style['results']}>
 			<Suspense fallback={<p>Loading results...</p>}>
