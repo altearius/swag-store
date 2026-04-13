@@ -1,5 +1,7 @@
 import type { Product } from '#api/api.types';
 import { Suspense, use } from 'react';
+import Result from '../result/Result';
+import style from './Results.module.css';
 
 interface Props {
 	readonly results: Promise<readonly Product[]>;
@@ -7,7 +9,7 @@ interface Props {
 
 export default function Results(p: Props) {
 	return (
-		<section>
+		<section className={style['results']}>
 			<Suspense fallback={<p>Loading results...</p>}>
 				<ResultList results={p.results} />
 			</Suspense>
@@ -26,8 +28,7 @@ function ResultList(p: Props) {
 		<ul>
 			{results.map((result, idx) => (
 				<li key={result.id ?? idx}>
-					<h2>{result.name}</h2>
-					<p>{result.description}</p>
+					<Result result={result} />
 				</li>
 			))}
 		</ul>

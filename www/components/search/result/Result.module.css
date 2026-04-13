@@ -1,0 +1,28 @@
+.result {
+	display: flex;
+	text-decoration: none;
+	color: inherit;
+
+	/* image container */
+	> div:first-child {
+		flex-shrink: 0;
+		position: relative;
+		width: 100px;
+		height: 100px;
+	}
+
+	/* details container */
+	> div:last-child {
+		padding: 0.5rem;
+	}
+
+	h2 {
+		font-family: var(--font-orbitron);
+		margin-bottom: 0.75rem;
+	}
+
+	p {
+		font-family: var(--font-noto);
+		margin-bottom: 0.5rem;
+	}
+}

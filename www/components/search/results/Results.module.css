@@ -1,0 +1,9 @@
+.results {
+	> ul {
+		list-style: none;
+
+		> li {
+			margin-bottom: 1rem;
+		}
+	}
+}
