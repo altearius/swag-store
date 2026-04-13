@@ -22,9 +22,17 @@ export default function Modal(p: Props) {
 		},
 	}));
 
+	const onClickClose = () => {
+		dialogRef.current?.close();
+	};
+
 	return (
 		<dialog closedby="any" ref={dialogRef} className={style['modal']}>
-			<h2>Category</h2>
+			<button type="button" onClick={onClickClose}>
+				❌
+			</button>
+
+			<h2>Categories</h2>
 
 			<Suspense fallback={<p>Loading categories...</p>}>
 				<List categories={p.categories} />

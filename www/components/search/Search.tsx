@@ -14,9 +14,7 @@ export default function Search(p: Props) {
 		<main className={clsx(style['search'], 'layout-max-width')}>
 			<h1>Products</h1>
 
-			<form>
-				<Controls categories={p.categories} />
-			</form>
+			<Controls categories={p.categories} />
 		</main>
 	);
 }

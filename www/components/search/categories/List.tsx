@@ -9,6 +9,10 @@ interface Props {
 export function List(p: Props) {
 	const categories = use(p.categories);
 
+	if (categories.size === 0) {
+		return <p>No categories found.</p>;
+	}
+
 	const sorted = Array.from(categories).sort(([, a], [, b]) =>
 		(a.name ?? '').localeCompare(b.name ?? ''),
 	);
@@ -16,7 +20,11 @@ export function List(p: Props) {
 	return (
 		<ul className={style['list']}>
 			{sorted.map(([slug, { name }]) => (
-				<li key={slug}>{name}</li>
+				<li key={slug}>
+					<label>
+						<input type="checkbox" name="categories" value={slug} /> {name}
+					</label>
+				</li>
 			))}
 		</ul>
 	);

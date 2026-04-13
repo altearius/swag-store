@@ -4,6 +4,13 @@
 	padding: 1rem;
 	width: 100%;
 
+	> button {
+		background: transparent;
+		border: none;
+		position: absolute;
+		inset: 1rem 1rem auto auto;
+	}
+
 	h2 {
 		font-family: var(--font-orbitron);
 		margin-bottom: 1rem;
