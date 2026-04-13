@@ -1,7 +1,12 @@
 .input {
 	font-family: var(--font-noto);
 
-	button {
+	button[type='button'] {
+		background: transparent;
+		border: none;
+	}
+
+	button[type='submit'] {
 		font-family: var(--font-orbitron);
 	}
 }
