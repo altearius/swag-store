@@ -1,6 +1,9 @@
 import type { CartItem } from '#api/api.types';
 import formatPrice from '#lib/formatPrice';
+import parseQuantity from '#lib/parseQuantity';
 import Image from 'next/image';
+import { useCallback } from 'react';
+import useCart from '../../../cart/useCart';
 import style from './Item.module.css';
 
 interface Props {
@@ -8,7 +11,24 @@ interface Props {
 }
 
 export default function Item(p: Props) {
+	const { updateQuantity } = useCart();
 	const image = p.item.product?.images?.[0];
+	const currency = p.item.product?.currency ?? 'USD';
+	const productId = p.item.productId ?? p.item.product?.id;
+
+	const action = useCallback(
+		async (formData: FormData) => {
+			if (!productId) {
+				throw new Error('Product ID is required to add to cart');
+			}
+
+			await updateQuantity(
+				productId,
+				parseQuantity(formData.get('quantity') ?? '0'),
+			);
+		},
+		[updateQuantity, productId],
+	);
 
 	return (
 		<div className={style['item']}>
@@ -23,21 +43,27 @@ export default function Item(p: Props) {
 					/>
 				) : null}
 			</div>
-			<div>
+			<form action={action}>
 				<h3>{p.item.product?.name}</h3>
 				<p>
-					{p.item.quantity} &times;{' '}
-					{formatPrice(
-						p.item.product?.price ?? 0,
-						p.item.product?.currency ?? 'USD',
-					)}{' '}
-					={' '}
-					{formatPrice(
-						p.item.lineTotal ?? 0,
-						p.item.product?.currency ?? 'USD',
-					)}
+					<label>
+						Update Quantity:{' '}
+						<input
+							type="number"
+							name="quantity"
+							defaultValue={p.item.quantity}
+							min={0}
+							step={1}
+						/>
+					</label>
+					<button type="submit">Save</button>
 				</p>
-			</div>
+				<p>
+					{(p.item.quantity ?? 0).toLocaleString()}
+					&times; {formatPrice(p.item.product?.price ?? 0, currency)} ={' '}
+					{formatPrice(p.item.lineTotal ?? 0, currency)}
+				</p>
+			</form>
 		</div>
 	);
 }

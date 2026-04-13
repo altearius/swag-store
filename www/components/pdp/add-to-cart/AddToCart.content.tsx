@@ -1,5 +1,7 @@
 'use client';
 
+import parseQuantity from '#lib/parseQuantity';
+import { useRouter } from 'next/navigation';
 import { use, useCallback } from 'react';
 import useCart from '../../../cart/useCart';
 import style from './AddToCart.module.css';
@@ -7,7 +9,9 @@ import type { Props } from './AddToCart.props';
 
 export default function AddToCartContent(p: Props) {
 	const stock = use(p.stock);
-	const cart = useCart();
+	const { addToCart } = useCart();
+	const router = useRouter();
+
 	const available = stock?.stock ?? 0;
 	const { id: productId } = p.product;
 	const disabled = available < 1 || typeof productId !== 'string';
@@ -18,22 +22,18 @@ export default function AddToCartContent(p: Props) {
 
 	const action = useCallback(
 		async (formData: FormData) => {
-			const rawQuantity = formData.get('quantity');
-
 			if (!productId) {
 				throw new Error('Product ID is required to add to cart');
 			}
 
-			const quantity =
-				typeof rawQuantity === 'string' ? parseInt(rawQuantity, 10) : 1;
+			await addToCart(
+				productId,
+				Math.max(parseQuantity(formData.get('quantity') ?? '1'), 1),
+			);
 
-			if (Number.isNaN(quantity) || quantity < 1) {
-				throw new Error('Quantity must be a positive integer');
-			}
-
-			await cart.addToCart(productId, quantity);
+			router.push('/cart');
 		},
-		[cart, productId],
+		[addToCart, productId, router],
 	);
 
 	return (
