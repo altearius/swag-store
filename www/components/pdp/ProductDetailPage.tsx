@@ -1,5 +1,6 @@
 import type { Product, Stock } from '#api/api.types';
 import formatPrice from '#lib/formatPrice';
+import clsx from 'clsx';
 import Image from 'next/image';
 import style from './ProductDetailPage.module.css';
 import AddToCart from './add-to-cart/AddToCart';
@@ -21,7 +22,7 @@ export default function ProductDetailPage(p: Props) {
 	const hasPrice = typeof price === 'number';
 
 	return (
-		<main className={style['product-detail-page']}>
+		<main className={clsx(style['product-detail-page'], 'layout-max-width')}>
 			{name ? <h1>{name}</h1> : null}
 
 			{image ? (

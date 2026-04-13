@@ -17,7 +17,7 @@ export default function FeaturedProductsMobile(p: Props) {
 
 	return (
 		<section className={styles['featured-products']}>
-			<h2>Featured Products</h2>
+			<h2 className="layout-max-width">Featured Products</h2>
 
 			<div ref={emblaRef}>
 				<ol>

@@ -9,9 +9,9 @@ interface Props {
 export default function FeaturedProductsDesktop(p: Props) {
 	return (
 		<section className={styles['featured-products']}>
-			<h2>Featured Products</h2>
+			<h2 className="layout-max-width">Featured Products</h2>
 
-			<ol>
+			<ol className="layout-max-width">
 				{p.products.map((product, idx) => (
 					<li key={product.id ?? idx}>
 						<Product product={product} />

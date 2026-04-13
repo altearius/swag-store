@@ -1,6 +1,4 @@
 .footer {
 	font-family: var(--font-noto);
-	max-width: var(--layout-max-width);
-	margin: 1rem auto;
-	width: 100%;
+	padding-top: 2rem;
 }

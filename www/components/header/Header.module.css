@@ -2,8 +2,6 @@
 	display: grid;
 	padding: 0 1rem;
 	gap: 0.5rem;
-	max-width: var(--layout-max-width);
-	margin: 0 auto;
 	grid-template:
 		'logo cart' auto
 		'nav nav' auto / 50% 50%;

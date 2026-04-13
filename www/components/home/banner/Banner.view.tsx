@@ -15,13 +15,15 @@ export default function BannerView(p: Props) {
 
 	return (
 		<section className={styles['banner']}>
-			{promo.title ? <h2>{promo.title}</h2> : null}
-			{promo.description ? <p>{promo.description}</p> : null}
-			{promo.code ? (
-				<p>
-					Use code: <strong>{promo.code}</strong>
-				</p>
-			) : null}
+			<div className="layout-max-width">
+				{promo.title ? <h2>{promo.title}</h2> : null}
+				{promo.description ? <p>{promo.description}</p> : null}
+				{promo.code ? (
+					<p>
+						Use code: <strong>{promo.code}</strong>
+					</p>
+				) : null}
+			</div>
 		</section>
 	);
 }

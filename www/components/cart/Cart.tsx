@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Link from 'next/link';
 import style from './Cart.module.css';
 import Contents from './contents/Contents';
@@ -8,7 +9,7 @@ import Total from './total/Total';
 
 export default function CartPage() {
 	return (
-		<main className={style['cart-page']}>
+		<main className={clsx(style['cart-page'], 'layout-max-width')}>
 			<h2>Cart Contents</h2>
 			<Empty />
 			<Contents />

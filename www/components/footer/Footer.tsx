@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -8,5 +9,10 @@ export default function Footer() {
 	// as non-deterministic.
 	const year = new Date().getFullYear();
 
-	return <footer className={styles['footer']}>© {year} Swag Store</footer>;
+	return (
+		<footer className={clsx(styles['footer'])}>
+			{/* @ts-expect-error - hahaha, marquee still works, lol */}
+			<marquee>© {year} Swag Store</marquee>
+		</footer>
+	);
 }
