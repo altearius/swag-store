@@ -1,0 +1,15 @@
+.total {
+	table-layout: fixed;
+
+	th {
+		text-align: left;
+		padding-inline: 0.5em;
+		font-family: var(--font-orbitron);
+	}
+
+	td {
+		text-align: right;
+		padding-inline: 0.5em;
+		font-family: var(--font-noto);
+	}
+}
