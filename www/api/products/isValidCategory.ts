@@ -1,4 +1,4 @@
-import type { operations } from '../openapi.yaml';
+import type { ProductListCategory } from '../api.types';
 
 const validCategories = new Set([
 	'accessories',
@@ -15,9 +15,6 @@ const validCategories = new Set([
 	't-shirts',
 	'tech',
 ]);
-
-type Query = NonNullable<operations['listProducts']['parameters']['query']>;
-type Category = NonNullable<Query['category']>;
 
 // The API documentes the "category" query parameter as being an enum with
 // a restricted set of values. I understand that to mean that I need to do
@@ -42,6 +39,6 @@ type Category = NonNullable<Query['category']>;
 /**
  * Validate a string as being a valid category.
  */
-export function isValidCategory(value: string): value is Category {
+export function isValidCategory(value: string): value is ProductListCategory {
 	return validCategories.has(value);
 }

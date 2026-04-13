@@ -1,4 +1,5 @@
 import { cacheLife } from 'next/cache';
+import type { ProductListCategory } from '../api.types';
 import createClient from '../createClient';
 import type { operations } from '../openapi.yaml';
 import transformQuery from './lib/transformQuery';
@@ -7,7 +8,7 @@ import transformResult from './lib/transformResult';
 type Query = NonNullable<operations['listProducts']['parameters']['query']>;
 
 export interface Options {
-	readonly category?: Query['category'] | undefined;
+	readonly category?: ProductListCategory | undefined;
 	readonly featured?: boolean;
 	readonly limit?: number | undefined;
 	readonly page?: number | undefined;

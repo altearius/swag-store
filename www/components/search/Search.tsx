@@ -1,6 +1,4 @@
-'use client';
-
-import type { Categories, Product } from '#api/api.types';
+import type { Categories } from '#api/api.types';
 import clsx from 'clsx';
 import style from './Search.module.css';
 import Controls from './controls/Controls';
@@ -8,7 +6,7 @@ import Results from './results/Results';
 
 interface Props {
 	readonly categories: Promise<Categories>;
-	readonly results: Promise<readonly Product[]>;
+	readonly searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export default function Search(p: Props) {
@@ -17,7 +15,7 @@ export default function Search(p: Props) {
 			<h1>Products</h1>
 
 			<Controls categories={p.categories} />
-			<Results results={p.results} />
+			<Results searchParams={p.searchParams} />
 		</main>
 	);
 }
