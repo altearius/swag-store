@@ -10,7 +10,7 @@ import Total from './total/Total';
 export default function CartPage() {
 	return (
 		<main className={clsx(style['cart-page'], 'layout-max-width')}>
-			<h2>Cart Contents</h2>
+			<h1>Cart Contents</h1>
 			<Empty />
 			<Contents />
 			<Total />

@@ -1,0 +1,7 @@
+.input {
+	font-family: var(--font-noto);
+
+	button {
+		font-family: var(--font-orbitron);
+	}
+}
