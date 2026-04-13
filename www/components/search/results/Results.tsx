@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
 import Result from '../result/Result';
 import style from './Results.module.css';
-import bindCategory from './lib/bindCategory';
-import bindValue from './lib/bindValue';
 import search from './lib/search';
 
 interface Props {
@@ -20,8 +18,7 @@ export default async function Results(p: Props) {
 }
 
 async function ResultList(p: Props) {
-	const query = await p.searchParams;
-	const results = await search(bindCategory(query), bindValue(query['search']));
+	const results = (await search(p.searchParams))?.data ?? [];
 
 	if (results.length === 0) {
 		return <p>No results found.</p>;

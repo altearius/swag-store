@@ -1,10 +1,12 @@
-import type { ProductListCategory } from '#api/api.types';
 import listProducts from '#api/products/listProducts';
+import bindCategory from './bindCategory';
+import bindValue from './bindValue';
 
 export default async function search(
-	category: ProductListCategory | undefined,
-	term: string | undefined,
+	searchParams: Promise<Record<string, string | string[] | undefined>>,
 ) {
-	const results = await listProducts({ category, limit: 5, search: term });
-	return results?.data ?? [];
+	const query = await searchParams;
+	const category = bindCategory(query);
+	const term = bindValue(query['search']);
+	return listProducts({ category, limit: 5, search: term });
 }
