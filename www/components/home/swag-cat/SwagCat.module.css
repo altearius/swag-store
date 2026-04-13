@@ -1,0 +1,38 @@
+.swag-cat {
+	overflow: hidden;
+
+	img {
+		width: 100px;
+		height: auto;
+		position: relative;
+		left: -100px;
+		animation: swag-cat 15s linear infinite;
+	}
+}
+
+@keyframes swag-cat {
+	0% {
+		left: 10%;
+		transform: rotateY(0deg);
+	}
+
+	45% {
+		left: 90%;
+		transform: rotateY(0deg);
+	}
+
+	50% {
+		left: 90%;
+		transform: rotateY(180deg);
+	}
+
+	95% {
+		left: 10%;
+		transform: rotateY(180deg);
+	}
+
+	100% {
+		left: 10%;
+		transform: rotateY(0deg);
+	}
+}
