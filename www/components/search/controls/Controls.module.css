@@ -1,14 +1,16 @@
 .controls {
-	font-family: var(--font-noto);
+	border: 1px solid var(--color-border);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
 
-	button[type='button'] {
-		background: transparent;
-		border: none;
-		font-family: var(--font-noto);
-		font-size: 1rem;
+	> p {
+		margin-bottom: 1rem;
 	}
 
 	button[type='submit'] {
 		font-family: var(--font-orbitron);
+		font-size: 1rem;
+		padding-inline: 1rem;
 	}
 }

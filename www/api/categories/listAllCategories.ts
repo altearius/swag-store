@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
 import type { components } from '../openapi.yaml';
 
@@ -7,6 +8,9 @@ type CategoryDetail = Omit<Category, 'slug'>;
 export default async function listAllCategories(): Promise<
 	ReadonlyMap<string, CategoryDetail>
 > {
+	'use cache';
+	cacheLife('hours');
+
 	const client = createClient();
 	const result = await client.GET('/categories');
 

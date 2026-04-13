@@ -3,6 +3,7 @@
 import type { Categories as CategoryList } from '#api/api.types';
 import { useRef } from 'react';
 import Categories from '../categories/Categories';
+import Input from '../input/Input';
 import style from './Controls.module.css';
 
 interface Props {
@@ -15,11 +16,15 @@ export default function Controls(p: Props) {
 	return (
 		<form className={style['controls']} role="search" ref={formRef}>
 			<p>
-				<label>
-					<input type="text" name="search" placeholder="🔎 Search" />
-				</label>{' '}
+				<Input />
+			</p>
+
+			<p>
 				<Categories categories={p.categories} />
-				<button type="submit">Go</button>{' '}
+			</p>
+
+			<p>
+				<button type="submit">Search</button>
 			</p>
 		</form>
 	);
