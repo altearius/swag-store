@@ -1,3 +1,5 @@
+'use client';
+
 import useCart from '#cart/useCart';
 import style from './Empty.module.css';
 

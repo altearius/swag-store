@@ -35,7 +35,7 @@ function SearchInput(p: Props) {
 		(event: ChangeEvent<HTMLInputElement>) => {
 			const value = event.target.value.trim();
 
-			if (value.length >= 3) {
+			if (value.length >= 3 || value.length === 0) {
 				debounced(value);
 			}
 		},

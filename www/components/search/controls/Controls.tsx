@@ -15,18 +15,21 @@ export default function Controls(p: Props) {
 	const formRef = useRef<HTMLFormElement>(null);
 	const router = useRouter();
 
-	const action = useCallback((formData: FormData) => {
-		const params = new URLSearchParams();
-		const bind = bindString.bind(null, formData, params);
-		bind('search');
-		bind('category');
+	const action = useCallback(
+		(formData: FormData) => {
+			const params = new URLSearchParams();
+			const bind = bindString.bind(null, formData, params);
+			bind('search');
+			bind('category');
 
-		// Changing search/category is intentionally decoupled from pagination.
-		// The intent is that changing the search parameters should reset
-		// pagination.
+			// Changing search/category is intentionally decoupled from pagination.
+			// The intent is that changing the search parameters should reset
+			// pagination.
 
-		router.push(`?${params.toString()}`);
-	}, []);
+			router.push(`?${params.toString()}`);
+		},
+		[router],
+	);
 
 	const onTypeahead = useCallback(() => {
 		formRef.current?.requestSubmit();

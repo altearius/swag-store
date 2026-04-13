@@ -1,5 +1,3 @@
-'use client';
-
 import clsx from 'clsx';
 import Link from 'next/link';
 import style from './Cart.module.css';

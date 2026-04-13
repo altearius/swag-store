@@ -1,3 +1,5 @@
+'use client';
+
 import useCart from '#cart/useCart';
 import formatPrice from '#lib/formatPrice';
 import style from './Total.module.css';

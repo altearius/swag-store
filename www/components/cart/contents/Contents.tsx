@@ -1,3 +1,5 @@
+'use client';
+
 import type { CartItem } from '#api/api.types';
 import useCart from '#cart/useCart';
 import Item from '../item/Item';
