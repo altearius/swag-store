@@ -1,4 +1,4 @@
-import type { Product, Stock } from '#api/api.types';
+import type { Product } from '#api/api.types';
 import formatPrice from '#lib/formatPrice';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -8,7 +8,6 @@ import Meta from './meta/Meta';
 
 interface Props {
 	readonly product: Product;
-	readonly stock: Promise<Stock | null>;
 }
 
 export default function ProductDetailPage(p: Props) {
@@ -45,8 +44,9 @@ export default function ProductDetailPage(p: Props) {
 				</div>
 			) : null}
 
-			<AddToCart product={p.product} stock={p.stock} />
-			<Meta product={p.product} />
+			<AddToCart {...p} />
+
+			<Meta {...p} />
 		</main>
 	);
 }

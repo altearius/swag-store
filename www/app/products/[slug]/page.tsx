@@ -1,16 +1,13 @@
 import type { Product, StoreConfiguration } from '#api/api.types';
 import getProductDetail from '#api/products/getProductDetail';
-import getStock from '#api/stock/getStock';
 import getStoreConfiguration from '#api/store/getStoreConfiguration';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
-import { cacheLife } from 'next/cache';
 import { notFound } from 'next/navigation';
 import ProductDetailPage from '../../../components/pdp/ProductDetailPage';
 
 export default async function Page(p: PageProps<'/products/[slug]'>) {
 	'use cache';
-	cacheLife('seconds');
 
 	const { slug } = await p.params;
 	const product = await getProductDetail(slug);
@@ -19,7 +16,7 @@ export default async function Page(p: PageProps<'/products/[slug]'>) {
 		notFound();
 	}
 
-	return <ProductDetailPage product={product} stock={getStock(slug)} />;
+	return <ProductDetailPage product={product} />;
 }
 
 export async function generateMetadata(
