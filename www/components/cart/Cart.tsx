@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import style from './Cart.module.css';
 import Contents from './contents/Contents';
 import Empty from './empty/Empty';
@@ -12,6 +13,11 @@ export default function CartPage() {
 			<Empty />
 			<Contents />
 			<Total />
+			<p>
+				<Link href="/search" className="button">
+					Continue Shopping
+				</Link>
+			</p>
 		</main>
 	);
 }

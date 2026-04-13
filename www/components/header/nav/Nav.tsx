@@ -14,7 +14,7 @@ export default function Nav(p: Props) {
 					<Link href="/">Home</Link>
 				</li>
 				<li>
-					<a href="/search">Search</a>
+					<Link href="/search">Search</Link>
 				</li>
 			</ol>
 		</nav>

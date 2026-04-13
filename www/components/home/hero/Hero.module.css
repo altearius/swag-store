@@ -14,15 +14,6 @@
 		font-family: var(--font-noto);
 	}
 
-	a {
-		text-decoration: none;
-		display: inline-block;
-		padding: 0.75rem 1.5rem;
-		background-color: var(--color-inverse-bg);
-		color: var(--color-inverse);
-		border-radius: 20px;
-	}
-
 	> * {
 		max-width: var(--layout-max-width);
 		margin: 0 auto;

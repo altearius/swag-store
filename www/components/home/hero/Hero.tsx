@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Hero.module.css';
 
 // TODO: Docs say this is supposed to have a visual element.
@@ -26,7 +27,9 @@ export default function Hero() {
 			</p>
 
 			<p>
-				<a href="/products">Shop Now</a>
+				<Link href="/search" className="button">
+					Shop Now
+				</Link>
 			</p>
 		</section>
 	);
