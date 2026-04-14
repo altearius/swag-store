@@ -7,6 +7,7 @@ import useStock from '#lib/useStock';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { useFormStatus } from 'react-dom';
 import style from './AddToCart.module.css';
 
 interface Props {
@@ -20,6 +21,7 @@ export default function AddToCart(p: Props) {
 	const { addToCart } = useCart();
 	const router = useRouter();
 	const available = stock?.stock ?? 0;
+
 	const disabled = loading || available < 1 || typeof productId !== 'string';
 
 	const action = useCallback(
@@ -27,6 +29,8 @@ export default function AddToCart(p: Props) {
 			if (!productId) {
 				throw new Error('Product ID is required to add to cart');
 			}
+
+			router.prefetch('/cart');
 
 			await addToCart(
 				productId,
@@ -58,10 +62,23 @@ export default function AddToCart(p: Props) {
 						{...(disabled ? { disabled, max: 1 } : { max: available })}
 					/>
 				</label>
-				<button type="submit" disabled={disabled}>
-					Add to Cart
-				</button>
+				<Submit disabled={disabled} />
 			</p>
 		</form>
+	);
+}
+
+interface SubmitProps {
+	readonly disabled: boolean;
+}
+
+function Submit(p: SubmitProps) {
+	const { pending } = useFormStatus();
+	const disabled = pending || p.disabled;
+
+	return (
+		<button type="submit" disabled={disabled}>
+			{pending ? 'Adding...' : 'Add to Cart'}
+		</button>
 	);
 }

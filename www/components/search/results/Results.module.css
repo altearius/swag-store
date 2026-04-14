@@ -14,7 +14,7 @@
 
 	Since five is an odd number, the grid will either have a single row
 	of five items, a single column of five items, or there will be one
-	or or column with not enough items.
+	row or column with not enough items.
 	*/
 	@media (width >= 40rem) {
 		> ul {

@@ -1,11 +1,12 @@
 import type { CartItem } from '#api/api.types';
 import useCart from '#cart/useCart';
-import formatPrice from '#lib/formatPrice';
 import parseQuantity from '#lib/parseQuantity';
 import routeProduct from '#lib/routeProduct';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback } from 'react';
+import { useFormStatus } from 'react-dom';
+import Quantity from '../quantity/Quantity';
 import style from './Item.module.css';
 
 interface Props {
@@ -15,7 +16,6 @@ interface Props {
 export default function Item(p: Props) {
 	const { updateQuantity } = useCart();
 	const image = p.item.product?.images?.[0];
-	const currency = p.item.product?.currency ?? 'USD';
 	const productId = p.item.productId ?? p.item.product?.id;
 	const name = p.item.product?.name ?? 'Unknown Product';
 	const route = routeProduct(p.item.product) ?? '/search';
@@ -55,31 +55,28 @@ export default function Item(p: Props) {
 				<h3>
 					<Link href={route}>{name}</Link>
 				</h3>
+				<p></p>
+				<Quantity item={p.item} />
 				<p>
-					{(p.item.quantity ?? 0).toLocaleString()}
-					&times; {formatPrice(p.item.product?.price ?? 0, currency)} ={' '}
-					{formatPrice(p.item.lineTotal ?? 0, currency)}
-				</p>
-				<p>
-					<label>
-						Update Quantity:
-						<br />
-						<input
-							type="number"
-							name="quantity"
-							defaultValue={p.item.quantity}
-							min={0}
-							step={1}
-						/>
-					</label>
-					<button name="actionType" type="submit" value="save">
-						Save
-					</button>
-					<button name="actionType" type="submit" value="remove">
-						Remove
-					</button>
+					<Submit />
 				</p>
 			</form>
 		</div>
+	);
+}
+
+function Submit() {
+	const { pending } = useFormStatus();
+
+	return (
+		<>
+			<button name="actionType" type="submit" value="save" disabled={pending}>
+				Save
+			</button>
+
+			<button name="actionType" type="submit" value="remove" disabled={pending}>
+				Remove
+			</button>
+		</>
 	);
 }
