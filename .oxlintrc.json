@@ -1,7 +1,7 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
 	"plugins": ["typescript", "unicorn", "oxc"],
-	"ignorePatterns": ["www/api/openapi.d.yaml.ts"],
+	"ignorePatterns": ["www/api/openapi-types.ts"],
 	"categories": {
 		"correctness": "error"
 	},
