@@ -3,7 +3,6 @@
 	"compilerOptions": {
 		"target": "ES2017",
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowArbitraryExtensions": true,
 		"allowJs": true,
 		"skipLibCheck": true,
 		"noEmit": true,
@@ -24,8 +23,6 @@
 		"next-env.d.ts",
 		".next/types/**/*.ts",
 		".next/dev/types/**/*.ts",
-		"api/openapi.d.yaml.ts",
-		"api/openapi.yaml",
 		"**/*.mts",
 		"**/*.ts",
 		"**/*.tsx"

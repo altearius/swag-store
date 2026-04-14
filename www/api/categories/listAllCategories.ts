@@ -1,6 +1,6 @@
 import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
-import type { components } from '../openapi.yaml';
+import type { components } from '../openapi.d.yaml';
 
 type Category = components['schemas']['Category'];
 type CategoryDetail = Omit<Category, 'slug'>;

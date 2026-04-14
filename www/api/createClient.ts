@@ -1,6 +1,6 @@
 import createOpenApiClient from 'openapi-fetch';
 import getReqEnv from '../lib/getReqEnv';
-import type { paths } from './openapi.yaml';
+import type { paths } from './openapi.d.yaml';
 
 export default function createClient() {
 	const baseUrl = getReqEnv('Api_Base_Url');

@@ -1,7 +1,7 @@
 import { cacheLife } from 'next/cache';
 import type { ProductListCategory } from '../api.types';
 import createClient from '../createClient';
-import type { operations } from '../openapi.yaml';
+import type { operations } from '../openapi.d.yaml';
 import transformQuery from './lib/transformQuery';
 import transformResult from './lib/transformResult';
 

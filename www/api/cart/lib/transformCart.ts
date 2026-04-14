@@ -1,6 +1,6 @@
 import type { Readable } from 'openapi-typescript-helpers';
 import transformProduct from '../../lib/transformProduct';
-import type { components } from '../../openapi.yaml';
+import type { components } from '../../openapi.d.yaml';
 
 type CartResponse = components['schemas']['CartResponse'];
 type Item = components['schemas']['CartItemWithProduct'];

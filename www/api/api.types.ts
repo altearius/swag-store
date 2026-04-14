@@ -1,7 +1,7 @@
 import type transformCart from './cart/lib/transformCart';
 import type listAllCategories from './categories/listAllCategories';
 import type transformProduct from './lib/transformProduct';
-import type { operations } from './openapi.yaml';
+import type { operations } from './openapi.d.yaml';
 import type getStock from './stock/getStock';
 import type getStoreConfiguration from './store/getStoreConfiguration';
 

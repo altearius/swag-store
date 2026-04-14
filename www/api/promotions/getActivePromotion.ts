@@ -1,5 +1,5 @@
 import createClient from '../createClient';
-import type { components } from '../openapi.yaml';
+import type { components } from '../openapi.d.yaml';
 
 type Promotion = components['schemas']['Promotion'];
 

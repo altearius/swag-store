@@ -1,5 +1,5 @@
 import type { Readable } from 'openapi-typescript-helpers';
-import type { components } from '../openapi.yaml';
+import type { components } from '../openapi.d.yaml';
 
 type Product = components['schemas']['Product'];
 
