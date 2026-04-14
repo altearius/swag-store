@@ -1,8 +1,9 @@
+import transformProduct from '#api/lib/transformProduct';
+import type { components } from '#api/openapi-types';
 import type { Readable } from 'openapi-typescript-helpers';
-import transformProduct from '../../lib/transformProduct';
 
-type CartResponse = API.components['schemas']['CartResponse'];
-type Item = API.components['schemas']['CartItemWithProduct'];
+type CartResponse = components['schemas']['CartResponse'];
+type Item = components['schemas']['CartItemWithProduct'];
 
 export default function transformCart(
 	response: Readable<CartResponse> | undefined,

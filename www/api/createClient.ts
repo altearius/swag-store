@@ -1,10 +1,11 @@
 import createOpenApiClient from 'openapi-fetch';
 import getReqEnv from '../lib/getReqEnv';
+import type { paths } from './openapi-types';
 
 export default function createClient() {
 	const baseUrl = getReqEnv('Api_Base_Url');
 
-	const client = createOpenApiClient<API.paths>({
+	const client = createOpenApiClient<paths>({
 		baseUrl,
 		headers: {
 			'x-vercel-protection-bypass': getReqEnv('Api_Token'),

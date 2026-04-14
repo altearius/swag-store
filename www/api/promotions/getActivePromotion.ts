@@ -1,6 +1,7 @@
 import createClient from '../createClient';
+import type { components } from '../openapi-types';
 
-type Promotion = API.components['schemas']['Promotion'];
+type Promotion = components['schemas']['Promotion'];
 
 // Note: the documentation says "May return a different promotion on
 // each request," which implies that we should not attempt to cache this

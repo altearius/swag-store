@@ -1,6 +1,7 @@
 import type transformCart from './cart/lib/transformCart';
 import type listAllCategories from './categories/listAllCategories';
 import type transformProduct from './lib/transformProduct';
+import type { operations } from './openapi-types';
 import type getStock from './stock/getStock';
 import type getStoreConfiguration from './store/getStoreConfiguration';
 
@@ -13,7 +14,7 @@ export type StoreConfiguration = NonNullable<
 	Awaited<ReturnType<typeof getStoreConfiguration>>
 >;
 
-type Query = NonNullable<API.operations['listProducts']['parameters']['query']>;
+type Query = NonNullable<operations['listProducts']['parameters']['query']>;
 export type ProductListCategory = NonNullable<Query['category']>;
 
 // The API documentation makes a distinction between the list of categories

@@ -1,6 +1,7 @@
 import type { Readable } from 'openapi-typescript-helpers';
+import type { components } from '../openapi-types';
 
-type Product = API.components['schemas']['Product'];
+type Product = components['schemas']['Product'];
 
 export default function transformProduct(item: Readable<Product>) {
 	const {

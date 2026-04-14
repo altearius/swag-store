@@ -1,7 +1,8 @@
 import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
+import type { components } from '../openapi-types';
 
-type Category = API.components['schemas']['Category'];
+type Category = components['schemas']['Category'];
 type CategoryDetail = Omit<Category, 'slug'>;
 
 export default async function listAllCategories(): Promise<

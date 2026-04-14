@@ -1,3 +1,5 @@
+import type { operations } from '#api/openapi-types';
+
 export type Query = NonNullable<
-	API.operations['listProducts']['parameters']['query']
+	operations['listProducts']['parameters']['query']
 >;

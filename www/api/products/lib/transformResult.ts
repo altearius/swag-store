@@ -1,7 +1,8 @@
+import transformProduct from '#api/lib/transformProduct';
+import type { components } from '#api/openapi-types';
 import type { Readable } from 'openapi-typescript-helpers';
-import transformProduct from '../../lib/transformProduct';
 
-type Result = API.components['schemas']['ProductListResponse'];
+type Result = components['schemas']['ProductListResponse'];
 
 export default function transformResult(result: Readable<Result> | undefined) {
 	if (!result) {
