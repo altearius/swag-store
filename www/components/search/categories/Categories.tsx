@@ -30,7 +30,8 @@ function CategorySkeleton() {
 function CategoryDropdown(p: Props) {
 	const categories = use(p.categories);
 	const query = useSearchParams();
-	const selected = query.get('category') ?? '';
+	const categoryFromQuery = query.get('category') ?? '';
+	const category = categories.has(categoryFromQuery) ? categoryFromQuery : '';
 
 	if (categories.size === 0) {
 		return (
@@ -44,8 +45,10 @@ function CategoryDropdown(p: Props) {
 		(a.name ?? '').localeCompare(b.name ?? ''),
 	);
 
+	// See Categories.md concerning the `key={category}` usage below.
+
 	return (
-		<select name="category" defaultValue={selected}>
+		<select name="category" defaultValue={category} key={category}>
 			<option value="">All categories</option>
 			{sorted.map(([slug, { name }]) => (
 				<option key={slug} value={slug}>
