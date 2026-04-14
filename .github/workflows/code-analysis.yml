@@ -1,0 +1,31 @@
+name: Code Analysis
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  code-analysis:
+    name: Code Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare dependencies
+        uses: ./.github/actions/prepare-dependencies
+
+      - name: Check white-space
+        run: yarn fmt --check
+
+      - name: Build
+        run: yarn build
+
+      - name: ESLint
+        run: yarn lint-ts
+
+      - name: Stylelint
+        run: yarn lint-css
