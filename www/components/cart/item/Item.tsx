@@ -55,7 +55,6 @@ export default function Item(p: Props) {
 				<h3>
 					<Link href={route}>{name}</Link>
 				</h3>
-				<p></p>
 				<Quantity item={p.item} />
 				<p>
 					<Submit />
