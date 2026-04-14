@@ -1,5 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { useCallback, useContext } from 'react';
+import { LoadingContext } from '../loading-context/LoadingContext';
 
 interface Props {
 	readonly children: ReactNode;
@@ -11,6 +15,14 @@ interface Props {
 }
 
 export default function PaginationLink(p: Props) {
+	const { startTransition } = useContext(LoadingContext);
+
+	const handleClick = useCallback(() => {
+		startTransition(() => {
+			// No need to do anything here, the link will handle the navigation
+		});
+	}, [startTransition]);
+
 	if (!p.enabled) {
 		return (
 			<span className="button" title={p.title}>
@@ -41,7 +53,7 @@ export default function PaginationLink(p: Props) {
 	const href = query ? (`?${query}` as const) : ('/search' as const);
 
 	return (
-		<Link href={href} className="button" title={p.title}>
+		<Link href={href} className="button" title={p.title} onClick={handleClick}>
 			{p.children}
 		</Link>
 	);

@@ -2,9 +2,10 @@
 
 import type { Categories as CategoryList } from '#api/api.types';
 import { useRouter } from 'next/navigation';
-import { useCallback, useRef } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import Categories from '../categories/Categories';
 import Input from '../input/Input';
+import { LoadingContext } from '../loading-context/LoadingContext';
 import style from './Controls.module.css';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 export default function Controls(p: Props) {
 	const formRef = useRef<HTMLFormElement>(null);
 	const router = useRouter();
+	const { startTransition } = useContext(LoadingContext);
 
 	const action = useCallback(
 		(formData: FormData) => {
@@ -26,9 +28,11 @@ export default function Controls(p: Props) {
 			// The intent is that changing the search parameters should reset
 			// pagination.
 
-			router.push(`?${params.toString()}`);
+			startTransition(() => {
+				router.push(`?${params.toString()}`);
+			});
 		},
-		[router],
+		[router, startTransition],
 	);
 
 	const onTypeahead = useCallback(() => {

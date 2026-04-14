@@ -1,10 +1,14 @@
-.results {
+.result-list {
 	> ul {
 		list-style: none;
 
 		> li {
 			margin-bottom: 1rem;
 		}
+	}
+
+	&.pending {
+		opacity: 0.5;
 	}
 
 	/*
