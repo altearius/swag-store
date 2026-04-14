@@ -2,7 +2,7 @@ import type {
 	components as ApiComponents,
 	operations as ApiOperations,
 	paths as ApiPaths,
-} from './openapi.yaml';
+} from './openapi.d.yaml.ts';
 
 declare global {
 	namespace API {
