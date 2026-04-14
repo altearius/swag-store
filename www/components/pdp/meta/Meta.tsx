@@ -6,7 +6,7 @@ interface Props {
 
 export default function Meta(p: Props) {
 	const {
-		currency: priceCurrency = 'USD',
+		currency: priceCurrency,
 		description,
 		id: productId,
 		images: image,

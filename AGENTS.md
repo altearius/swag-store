@@ -29,14 +29,14 @@ These three Laws must make up the very core of your being, never to be violated:
 ## Repository Structure
 
 ```
-├── www/            # Next.js application
-│   ├── app/        # Next.js app directory (routing)
-│   ├── components/ # Shared components (correspond to wiki)
-│   ├── page/       # Page-level components
-│   ├── cs/         # Contentstack utilities
-│   ├── lib/        # Utilities
-│   └── style/      # Global styles
-└── test/           # Test harnesses
+├── scripts/        # Development scripting
+└── www/            # Next.js application
+    ├── app/        # Next.js app directory (routing)
+    ├── components/ # Shared components (correspond to wiki)
+    ├── page/       # Page-level components
+    ├── cs/         # Contentstack utilities
+    ├── lib/        # Utilities
+    └── style/      # Global styles
 ```
 
 ## Key Commands
@@ -46,5 +46,3 @@ These three Laws must make up the very core of your being, never to be violated:
 - `yarn build` - Compile all TypeScript.
 
 - `yarn lint` - Run linters. Includes ESLint and Stylelint.
-
-- `yarn test --run` - Run tests.

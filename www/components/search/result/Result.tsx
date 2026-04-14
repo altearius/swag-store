@@ -11,7 +11,7 @@ interface Props {
 
 export default function Result(p: Props) {
 	const image = p.result.images?.[0];
-	const { currency = 'USD', price } = p.result;
+	const { currency, price } = p.result;
 	const route = routeProduct(p.result) ?? '/search';
 
 	return (
