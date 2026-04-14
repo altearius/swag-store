@@ -4,7 +4,7 @@ import { writeFile } from 'node:fs/promises';
 import openapiTS, { astToString } from 'openapi-typescript';
 
 const source = new URL('../www/api/openapi.yaml', import.meta.url);
-const destination = new URL('../www/api/openapi.d.yaml.ts', import.meta.url);
+const destination = new URL('../www/api/openapi-types.ts', import.meta.url);
 
 const ast = await openapiTS(source, {
 	alphabetize: true,
