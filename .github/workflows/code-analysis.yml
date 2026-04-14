@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: ESLint
+      - name: Oxlint
         run: yarn lint-ts
 
       - name: Stylelint
