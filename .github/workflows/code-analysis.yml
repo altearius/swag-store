@@ -21,6 +21,9 @@ jobs:
       - name: Check white-space
         run: yarn fmt --check
 
+      - name: Code generation
+        run: yarn workspace www next typegen
+
       - name: Build
         run: yarn build
 
