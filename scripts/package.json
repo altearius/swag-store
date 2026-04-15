@@ -2,7 +2,11 @@
   "name": "scripts",
   "license": "UNLICENSED",
   "type": "module",
+  "scripts": {
+    "start-proxy": "prism proxy --host 0.0.0.0 ../www/api/openapi.yaml 'https://vercel-swag-store-api.vercel.app/api'"
+  },
   "dependencies": {
+    "@stoplight/prism-cli": "^5.14.2",
     "openapi-typescript": "^7.13.0"
   },
   "devDependencies": {

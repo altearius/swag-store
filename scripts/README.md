@@ -2,6 +2,27 @@
 
 This sub-repository contains various scripts that are useful during development.
 
+## API Proxy
+
+While investigating the effects of various cache directives on API fetching,
+I found it useful to have direct visibility into the HTTP requests being made.
+[Prism][4] is provided for this purpose. Prism may be started in proxy
+mode using:
+
+```sh
+yarn workspace scripts start-proxy
+```
+
+The value of `Api_Base_Url` in the `.env` file may now be set to use Prism
+rather than directly accessing the upstream API; e.g.:
+
+```
+Api_Base_Url=http://localhost:4010
+```
+
+This intercepts upstream API requests and provides insight into the actual
+traffic around the cache.
+
 ## Static Type Gen
 
 This script is responsible for generating TypeScript interfaces based on the
@@ -14,7 +35,7 @@ control, even though it is usually inadvisable to commit generated code.
 If the OpenAPI specification changes for any reason, the generated types may
 be updated:
 
-```bash
+```sh
 yarn workspace scripts node ./staticTypeGen.ts
 ```
 
@@ -135,3 +156,4 @@ I made several attempts to solve the problem:
 [1]: https://www.typescriptlang.org/tsconfig/#allowArbitraryExtensions 'Allow Arbitrary Extensions'
 [2]: https://github.com/TypeStrong/ts-node/issues/797 'ts-node issue'
 [3]: https://stackoverflow.com/questions/67113576 'Vercel deployment question'
+[4]: https://stoplight.io/open-source/prism 'Prism'
