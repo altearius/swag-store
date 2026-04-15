@@ -1,12 +1,14 @@
 import clsx from 'clsx';
+import { cacheLife } from 'next/cache';
 import styles from './Footer.module.css';
 
-export default function Footer() {
-	// 'new Date()' is non-deterministic and would typically not play well with
-	// a cache. However, since we only use the year value, which only changes
-	// once a year, I judge that dealing with the stale year value is preferable
-	// than the complication that would come with treating this
-	// as non-deterministic.
+export default async function Footer() {
+	'use cache';
+	cacheLife('weeks');
+
+	// The call to `new Date()` is non-deterministic and is mentioned specifically
+	// in the documentation as something that needs to be handled specially for
+	// cache components.
 	const year = new Date().getFullYear();
 
 	return (
