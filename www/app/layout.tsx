@@ -3,6 +3,7 @@ import Footer from '#c/footer/Footer';
 import Header from '#c/header/Header';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import type { ReactNode } from 'react';
 import getStoreConfiguration from '../api/store/getStoreConfiguration';
 import Noto from '../style/fonts/Noto';
@@ -15,6 +16,7 @@ interface Props {
 
 export default async function RootLayout(p: Props) {
 	'use cache';
+	cacheLife('weeks');
 
 	return (
 		<html lang="en">
@@ -29,6 +31,7 @@ export default async function RootLayout(p: Props) {
 
 export async function generateMetadata(): Promise<Metadata> {
 	'use cache';
+	cacheLife('weeks');
 
 	const config = await getStoreConfiguration();
 
