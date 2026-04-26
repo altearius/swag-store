@@ -1,0 +1,11 @@
+{
+  "license": "UNLICENSED",
+  "name": "swag-store-test",
+  "packageManager": "yarn@4.13.0",
+  "private": true,
+  "scripts": {
+    "test": "vitest"
+  },
+  "type": "module",
+  "version": "0.0.1"
+}
