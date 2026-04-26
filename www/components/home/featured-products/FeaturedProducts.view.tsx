@@ -1,22 +1,15 @@
 'use client';
 
 import useBreakpoints from '#lib/useBreakpoints';
-import { use } from 'react';
 import FeaturedProductsDesktop from './FeaturedProducts.desktop';
 import FeaturedProductsMobile from './FeaturedProducts.mobile';
 import type { Props } from './FeaturedProducts.types';
 
 export default function FeaturedProductsView(p: Props) {
 	const { bp } = useBreakpoints();
-	const products = use(p.products);
 
-	if (products.length === 0) {
-		return null;
-	}
+	const Variant =
+		bp === 'xs' ? FeaturedProductsMobile : FeaturedProductsDesktop;
 
-	return bp === 'xs' ? (
-		<FeaturedProductsMobile products={p.products} />
-	) : (
-		<FeaturedProductsDesktop products={p.products} />
-	);
+	return p.products.length ? <Variant {...p} /> : null;
 }
