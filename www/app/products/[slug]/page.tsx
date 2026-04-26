@@ -6,7 +6,6 @@ import ProductDetailPage from '#c/pdp/ProductDetailPage';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
 import { cacheLife } from 'next/cache';
-import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 export default async function Page(p: PageProps<'/products/[slug]'>) {
@@ -41,9 +40,8 @@ export async function generateMetadata(
 }
 
 async function loadProduct(p: PageProps<'/products/[slug]'>) {
-	const [h, { slug }] = await Promise.all([headers(), p.params]);
-	const prefer = h.get('Prefer') ?? '';
-	return getProductDetail(slug, prefer);
+	const { slug } = await p.params;
+	return getProductDetail(slug);
 }
 
 function transformMetadata(
