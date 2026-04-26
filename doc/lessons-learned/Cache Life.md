@@ -107,7 +107,7 @@ if there is no search term. If there _is_ a search term, we can exclude them
 from the cache. Is it possible to do a dynamic `cacheLife("...")` depending
 on whether a search term is present or not?
 
-No, not if we are using a query string. Detecting the presense of a search
+No, not if we are using a query string. Detecting the presence of a search
 terms means accessing the search parameters, which is not allowed if the cache
 is active. This means the static shell will contain only the form alone and the
 search results must be loaded dynamically. This is bad news for a hub page
@@ -153,6 +153,67 @@ That leaves me here:
 - Let's say I start by relying on the data cache, thus the UI cache has no
   cache directive and I accept `no-cache`. Could I use the proxy.ts file to
   detect the "empty search" state and adjust the cache-control header?
+
+### Sitemap
+
+I've added a dynamic sitemap.ts file.
+
+When I do a production build, my build summary says this file is static:
+
+```
+Route (app)                           Revalidate  Expire
+┌ ○ /                                         1h      1d
+└ ○ /sitemap.xml                              1h      1d
+
+○  (Static)             prerendered as static content
+```
+
+It shouldn't be static, since it depends on products, and I've decided that
+products are dynamic and change hourly.
+
+Is it _really_ static? I added a `console.log` statement, which I observe at
+build time but not at runtime. If I wait for the revalidate period to happen,
+will it re-render?
+
+Also, the cache headers look like this:
+
+```
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-nextjs-cache: HIT
+cache-control: public, max-age=0, must-revalidate
+```
+
+That `cache-control` value is super interesting. I understand that to mean that
+a CDN is allowed to cache the sitemap, but the `max-age=0, must-revalidate`
+means the CDN is not allowed to actually _serve_ the cached content.
+
+Maybe there is supposed to be an ETag on this? But there was no ETag in the
+response header, no last-modified header either. There is a `Date` header in
+the full list but it changes on each request.
+
+I set `cacheLife('hours');` on the sitemap route. I confirmed that the `'hours'`
+value affects the revalidation time reported in the build summary, but it seems
+to have no effect on the `cache-control` header.
+
+**Update:** Ok, I hesitate to call this a _bug_ in Next.js since the cache
+behavior isn't necessarily _wrong_ here, just not what I would have expected.
+
+But I think this `cache-control` header value is coming from the hard-coded
+`CACHE_HEADERS.REVALIDATE` value in `next-metadata-route-loader.ts`.
+
+In that same file, there's a [TODO comment][3]:
+
+```ts
+// TODO-METADATA: improve the cache control strategy
+```
+
+So maybe this area is still in flux. If I really cared enough, I think I could
+probably change the response headers for the sitemap route either using proxy.ts
+or maybe the `headers` section of next.config.ts.
+
+**Update:** I waited for the revalidation period to expire and tested again,
+and I confirmed that I am getting the `x-nextjs-cache: STALE` header and my
+`console.log` message fires at run-time.
 
 ## Testing
 
@@ -338,7 +399,7 @@ Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
   - Something inside the compiler is scanning the code for specific calls that
     are white-listed as known to be non-deterministic.
 
-  - The while-list is partially documented, the documentation uses weasel words
+  - The white-list is partially documented, the documentation uses weasel words
     to suggest that only a subset is documented.
 
   - `performance.now()` was intentionally excluded from the white-list.
@@ -983,3 +1044,4 @@ ETag: "rir6j2g1kphcz"
 
 [1]: https://nextjs.org/docs/messages/nested-use-cache-no-explicit-cachelife 'Nested Use Cache with No Explicit CacheLife'
 [2]: https://nextjs.org/docs/messages/blocking-route 'Blocking route'
+[3]: https://github.com/vercel/next.js/blob/16e5f9e685188751f1f4fb085f6e9e729f409950/packages/next/src/build/webpack/loaders/next-metadata-route-loader.ts#L374 'Metadata route cache notes'

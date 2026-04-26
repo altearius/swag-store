@@ -2,8 +2,12 @@ import type { Product } from '#api/api.types';
 import listProducts from '#api/products/listProducts';
 import getBaseUrl from '#lib/getBaseUrl';
 import type { MetadataRoute } from 'next';
+import { cacheLife } from 'next/cache';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+	'use cache';
+	cacheLife('hours');
+
 	const baseUrl = getBaseUrl();
 	const products = await getProducts();
 
@@ -46,6 +50,7 @@ async function getProducts(): Promise<ReadonlyMap<string, Product>> {
 
 	do {
 		const results = await listProducts({ limit: 100, page });
+		let size = products.size;
 
 		for (const product of results?.data ?? []) {
 			const { slug } = product;
@@ -54,7 +59,10 @@ async function getProducts(): Promise<ReadonlyMap<string, Product>> {
 			}
 		}
 
-		page = results?.meta?.pagination?.hasNextPage ? page + 1 : null;
+		page =
+			products.size > size && results?.meta?.pagination?.hasNextPage
+				? page + 1
+				: null;
 	} while (page);
 
 	return products;
