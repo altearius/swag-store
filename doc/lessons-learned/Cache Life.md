@@ -90,21 +90,69 @@ for these should include the product detail but not the stock information.
 
 I can think of a couple of approaches.
 
-- Using `"weeks"` would be good if we exclude search results from the static
-  shell.
+Using `"hours"` would be good if we exclude search results from the static
+shell. I thought `"weeks"` at first, but I remember now that the search page has
+a list of categories, which are presumably based on products. Since I've already
+decided that products have an `"hours"` lifespan, categories must also match.
 
-- If we _do_ include search results in the shell, then by my previous logic,
-  we could still do `"hours"`. But does that mean every search results in an
-  ever-expanding cache?
+If we _do_ include search results in the shell, does that mean every search
+results in an ever-expanding cache?
 
-- The search results page also serves as the hub page for products. Because of
-  that, there is a good reason to want the search results included in the
-  server response, for SEO.
+The search results page also serves as the hub page for products. Because of
+that, there is a good reason to want the search results included in the server
+response, for SEO.
 
-- Therefore, we probably _do_ want the search results included in the cache,
-  if there is no search term. If there _is_ a search term, we can exclude them
-  from the cache. Is it possible to do a dynamic `cacheLife("...")` depending
-  on whether a search term is present or not?
+Therefore, we probably _do_ want the search results included in the cache,
+if there is no search term. If there _is_ a search term, we can exclude them
+from the cache. Is it possible to do a dynamic `cacheLife("...")` depending
+on whether a search term is present or not?
+
+No, not if we are using a query string. Detecting the presense of a search
+terms means accessing the search parameters, which is not allowed if the cache
+is active. This means the static shell will contain only the form alone and the
+search results must be loaded dynamically. This is bad news for a hub page
+though! We would typically want the search results to show up in the initial
+page load, not depend on JS to execute.
+
+I've considered the idea that we could move the search term from the query
+parameter to the path component, since we _can_ access a path slug while the
+cache is active. I've rejected this because it seems like it goes against
+the spirit of HTTP specs.
+
+#### Thinking
+
+That leaves me here:
+
+- I want the initial page of search results to be included in the server's HTML
+  payload, so it does not require JS to be discoverable by SEO and LLM.
+
+- Ideally, I would like an "empty search" to show the search results with an
+  `"hours"` cache life.
+
+- However, I cannot detect the "empty search" state while `cacheLife("hours")`
+  is on the route.
+
+- That leaves me with turning off the UI cache at the page level. I could still
+  use data-level caching.
+
+- Think harder: the reason I want the result HTML to be included in server
+  response is because I am thinking of the results page like a hub page, and
+  I want those results to be crawlable by engines and LLMs. Is that a valid
+  assumption? I certainly would prefer PageRank to flow from the hub. But I
+  could still expose individual detail pages if I make a sitemap.
+
+- So if I give up on the idea of the result page acting as a hub page for
+  robots, and rely on the sitemap instead, that means I can exclude the results
+  from the cache.
+
+- It burns me to load the results dynamically, though. It just feels wrong.
+
+- Maybe I should instead give up on the idea of using the UI cache and rely
+  on the data cache instead.
+
+- Let's say I start by relying on the data cache, thus the UI cache has no
+  cache directive and I accept `no-cache`. Could I use the proxy.ts file to
+  detect the "empty search" state and adjust the cache-control header?
 
 ## Testing
 

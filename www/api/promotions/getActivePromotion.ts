@@ -10,7 +10,6 @@ type Promotion = components['schemas']['Promotion'];
 // too heavily.
 
 export default async function getActivePromotion() {
-	console.log('Fetching active promotion', performance.now());
 	const client = createClient();
 	const result = await client.GET('/promotions');
 

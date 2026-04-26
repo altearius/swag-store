@@ -10,13 +10,30 @@ export default async function Page(p: PageProps<'/search'>) {
 	return <Search categories={categories} searchParams={p.searchParams} />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-	'use cache';
+export async function generateMetadata(
+	p: PageProps<'/search'>,
+): Promise<Metadata> {
+	const [config, search] = await Promise.all([
+		getStoreConfiguration(),
+		p.searchParams,
+	]);
 
-	const config = await getStoreConfiguration();
-	return transformMetadata(config);
+	return transformMetadata(config, search);
 }
 
-function transformMetadata(config: StoreConfiguration | null): Metadata {
-	return { title: formatPageTitle(config, 'Search') };
+function transformMetadata(
+	config: StoreConfiguration | null,
+	search: Record<string, string | string[] | undefined>,
+): Metadata {
+	const { page, search: searchTerm } = search;
+	const isFirstPage = page === undefined || page === '1';
+	const hasTerm = searchTerm !== undefined && searchTerm !== '';
+
+	return {
+		title: formatPageTitle(config, 'Search'),
+		robots: {
+			index: isFirstPage && !hasTerm,
+			follow: true,
+		},
+	};
 }
