@@ -1,31 +1,17 @@
 'use client';
 
-import type { Promotion } from '#api/api.types';
-import getActivePromotion from '#api/promotions/getActivePromotion';
-import { useEffect, useState, useTransition } from 'react';
 import styles from './Banner.module.css';
 import BannerSkeleton from './Banner.skeleton';
+import usePromotion from './usePromotion';
 
 export default function Banner() {
-	const [isPending, startTransition] = useTransition();
-	const [promo, setPromo] = useState<Promotion | null>(null);
-
-	useEffect(() => {
-		startTransition(async () => {
-			setPromo(await getActivePromotion());
-		});
-	}, []);
+	const { isPending, promo } = usePromotion();
 
 	if (isPending) {
 		return <BannerSkeleton />;
 	}
 
 	if (!promo) {
-		return null;
-	}
-
-	if (!promo.title && !promo.description) {
-		console.warn('Promotion is missing both title and description');
 		return null;
 	}
 
