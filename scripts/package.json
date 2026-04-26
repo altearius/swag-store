@@ -3,6 +3,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
+    "start-mock": "prism mock --host 0.0.0.0 ../www/api/openapi.yaml",
     "start-proxy": "prism proxy --host 0.0.0.0 ../www/api/openapi.yaml 'https://vercel-swag-store-api.vercel.app/api'"
   },
   "dependencies": {
