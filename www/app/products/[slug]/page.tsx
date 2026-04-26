@@ -6,14 +6,14 @@ import ProductDetailPage from '#c/pdp/ProductDetailPage';
 import formatPageTitle from '#lib/formatPageTitle';
 import type { Metadata } from 'next';
 import { cacheLife } from 'next/cache';
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 export default async function Page(p: PageProps<'/products/[slug]'>) {
 	'use cache';
 	cacheLife('hours');
 
-	const { slug } = await p.params;
-	const product = await getProductDetail(slug);
+	const product = await loadProduct(p);
 
 	if (!product) {
 		notFound();
@@ -30,10 +30,7 @@ export async function generateMetadata(
 
 	const [config, product] = await Promise.all([
 		getStoreConfiguration(),
-		(async () => {
-			const { slug } = await p.params;
-			return getProductDetail(slug);
-		})(),
+		loadProduct(p),
 	]);
 
 	if (!product) {
@@ -41,6 +38,12 @@ export async function generateMetadata(
 	}
 
 	return transformMetadata(config, product);
+}
+
+async function loadProduct(p: PageProps<'/products/[slug]'>) {
+	const [h, { slug }] = await Promise.all([headers(), p.params]);
+	const prefer = h.get('Prefer') ?? '';
+	return getProductDetail(slug, prefer);
 }
 
 function transformMetadata(

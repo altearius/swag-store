@@ -2,7 +2,7 @@ import { cacheLife } from 'next/cache';
 import createClient from '../createClient';
 import transformProduct from '../lib/transformProduct';
 
-export default async function getProductDetail(slug: string) {
+export default async function getProductDetail(slug: string, prefer: string) {
 	'use cache';
 	cacheLife('hours');
 
@@ -10,6 +10,7 @@ export default async function getProductDetail(slug: string) {
 
 	const result = await client.GET(`/products/{id}`, {
 		params: { path: { id: slug } },
+		...(prefer ? { headers: { Prefer: prefer } } : null),
 	});
 
 	const raw = result.data?.data;

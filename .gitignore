@@ -21,7 +21,10 @@ www/.next
 www/next-env.d.ts
 
 # TSC
-tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Vitest
+test/.cache
 
 # Ignore the local .env file
 .env

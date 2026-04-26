@@ -23,9 +23,12 @@ The following scripts are available:
 
 - `yarn build` - Compile all TypeScript.
 - `yarn dev` - Start the Next.js dev server.
-- `fmt` - Format all files.
-- `lint` - Static code analysis.
-- `lint-ts` - Lint for TypeScript only, supports `--fix` argument.
-- `lint-css` - Lint for CSS only, supports `--fix` argument.
+- `yarn fmt` - Format all files.
+- `yarn lint` - Static code analysis.
+- `yarn lint-ts` - Lint for TypeScript only, supports `--fix` argument.
+- `yarn lint-css` - Lint for CSS only, supports `--fix` argument.
+- `yarn test` - Run tests
+- `yarn workspace scripts start-mock` - Start mock server
+- `yarn workspace scripts start-proxy` - Start proxy server
 
 [1]: https://vercel-certification-assignments.vercel.app/vercel-swag-store 'Vercel Swag Store Certification Project'
