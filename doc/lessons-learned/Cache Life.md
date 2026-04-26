@@ -598,6 +598,8 @@ usefulness of this; is it simply to memoize the static shell?
 If so, I do not see this as being particularly useful outside of some edge
 cases.
 
+### Conclusion - Update 1
+
 Note: it occurs to me that my test harness may be limiting my understanding
 of the usefulness. Probably my test cases are all small enough to fit into
 a single chunk, so I am not observing any real streaming effect at all.
@@ -610,6 +612,38 @@ the inner bits are fully ready. In this case, would I see different
 `Cache-Control` headers? I don't think so, but I _might_ see a difference
 in lighthouse scores if the browser is able to start rendering before the
 last byte is actually received.
+
+### Conclusion - Update 2
+
+I tried harder to test this:
+
+1. I created the `scripts/streamObserver.ts` file to log chunks.
+2. I added a 5,000ms delay to the `listProducts` API call.
+
+My hope was that the chunks would start appearing, then I would see a five
+second delay, then more chunks containing the featured products.
+
+This did not happen. I realize now that the home page still has cache headers
+that trigger stale-while-revalidate behavior. This behavior means that
+the delay _does_ happen, but only during the background revalidation. The
+browser gets the stale version, which is still all in one chunk from the
+last time the page was rendered.
+
+I think this might have some benefit if these cases are all true:
+
+- I'm willing to accept a `no-cache` in the `Cache-Control`.
+- The static shell is still cached internally by Next.js.
+- One or more slow APIs are involved in rendering uncached data.
+
+Perhaps if I need to render a page that is specific to an authenticated user.
+
+Update: Verified -- I removed the `use cache` directive from the home page's
+route component, and now I see multiple chunks being delivered when I
+test using the `streamObserver`, including timing information that shows
+the 5-second delay is active.
+
+But since I want the home page to generally be cached, I no longer think
+the streaming solution is appropriate for the featured products.
 
 ## Client-side Data Loading
 
@@ -785,11 +819,6 @@ export default function Banner() {
   return <p>...banner contents same as before...</p>;
 }
 ```
-
-## Products Example
-
-I want to ensure the featured products on the home page are loaded using
-streaming.
 
 ## Conclusions
 
