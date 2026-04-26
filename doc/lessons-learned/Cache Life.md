@@ -72,6 +72,40 @@ I think this means:
 - Success means seeing an `s-maxage=3600` value in the response headers.
 - The banner still need to load dynamically, so a server action will be needed.
 
+## Stretch Goal - Other Page Behaviors
+
+### Cart
+
+The Cart page can cache quite aggressively. It does need to display dynamic
+content, but since the cart is stored purely client-side, the server-side
+response will always be the same.
+
+### Product Detail
+
+These should be cached for hours, based on my completely arbitrary decision
+that the `"hours"` life time is appropriate for products. The static shell
+for these should include the product detail but not the stock information.
+
+### Search
+
+I can think of a couple of approaches.
+
+- Using `"weeks"` would be good if we exclude search results from the static
+  shell.
+
+- If we _do_ include search results in the shell, then by my previous logic,
+  we could still do `"hours"`. But does that mean every search results in an
+  ever-expanding cache?
+
+- The search results page also serves as the hub page for products. Because of
+  that, there is a good reason to want the search results included in the
+  server response, for SEO.
+
+- Therefore, we probably _do_ want the search results included in the cache,
+  if there is no search term. If there _is_ a search term, we can exclude them
+  from the cache. Is it possible to do a dynamic `cacheLife("...")` depending
+  on whether a search term is present or not?
+
 ## Testing
 
 I know of three ways to test the cache:
