@@ -1,3 +1,5 @@
+'use server';
+
 import createClient from '../createClient';
 import type { components } from '../openapi-types';
 
@@ -8,8 +10,15 @@ type Promotion = components['schemas']['Promotion'];
 // too heavily.
 
 export default async function getActivePromotion() {
+	console.log('Fetching active promotion', performance.now());
 	const client = createClient();
 	const result = await client.GET('/promotions');
+
+	// A real implementation would probably want to check the values of
+	// `active`, `validFrom`, and `validUntil` to prevent displaying a
+	// promotion that isn't active or valid.
+	//
+	// This has not been identified as a requirement for this project.
 	return transform(result.data?.data);
 }
 

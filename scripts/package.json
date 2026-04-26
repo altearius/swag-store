@@ -6,13 +6,13 @@
     "start-proxy": "prism proxy --host 0.0.0.0 ../www/api/openapi.yaml 'https://vercel-swag-store-api.vercel.app/api'"
   },
   "dependencies": {
-    "@stoplight/prism-cli": "^5.14.2",
+    "@stoplight/prism-cli": "^5.15.10",
     "openapi-typescript": "^7.13.0"
   },
   "devDependencies": {
     "@tsconfig/node-ts": "^23.6.4",
     "@tsconfig/node24": "^24.0.4",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "packageManager": "yarn@4.13.0"
 }

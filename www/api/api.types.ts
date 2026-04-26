@@ -2,6 +2,7 @@ import type transformCart from './cart/lib/transformCart';
 import type listAllCategories from './categories/listAllCategories';
 import type transformProduct from './lib/transformProduct';
 import type { operations } from './openapi-types';
+import type getActivePromotion from './promotions/getActivePromotion';
 import type getStock from './stock/getStock';
 import type getStoreConfiguration from './store/getStoreConfiguration';
 
@@ -25,3 +26,7 @@ export type ProductListCategory = NonNullable<Query['category']>;
 //
 // Anyway, the documentation says it is two separate types, so here we are.
 export type Categories = Awaited<ReturnType<typeof listAllCategories>>;
+
+export type Promotion = NonNullable<
+	Awaited<ReturnType<typeof getActivePromotion>>
+>;

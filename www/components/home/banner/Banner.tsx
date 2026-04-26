@@ -1,18 +1,45 @@
+'use client';
+
+import type { Promotion } from '#api/api.types';
 import getActivePromotion from '#api/promotions/getActivePromotion';
-import BannerView from './Banner.view';
+import { useEffect, useState, useTransition } from 'react';
+import styles from './Banner.module.css';
+import BannerSkeleton from './Banner.skeleton';
 
-export default async function Banner() {
-	const promotion = await getActivePromotion();
+export default function Banner() {
+	const [isPending, startTransition] = useTransition();
+	const [promo, setPromo] = useState<Promotion | null>(null);
 
-	// A real implementation would probably want to check the values of
-	// `active`, `validFrom`, and `validUntil` to prevent displaying a
-	// promotion that isn't active or valid.
-	//
-	// This has not been identified as a requirement for this project.
-	if (!promotion) {
-		console.warn('No active promotion found');
+	useEffect(() => {
+		startTransition(async () => {
+			setPromo(await getActivePromotion());
+		});
+	}, []);
+
+	if (isPending) {
+		return <BannerSkeleton />;
+	}
+
+	if (!promo) {
 		return null;
 	}
 
-	return <BannerView promotion={promotion} />;
+	if (!promo.title && !promo.description) {
+		console.warn('Promotion is missing both title and description');
+		return null;
+	}
+
+	return (
+		<section className={styles['banner']}>
+			<div className="layout-max-width">
+				{promo.title ? <h2>{promo.title}</h2> : null}
+				{promo.description ? <p>{promo.description}</p> : null}
+				{promo.code ? (
+					<p>
+						Use code: <strong>{promo.code}</strong>
+					</p>
+				) : null}
+			</div>
+		</section>
+	);
 }
