@@ -854,6 +854,28 @@ export default function Banner() {
 }
 ```
 
+## Product Detail Page
+
+I'm aiming for these characteristics:
+
+- If the product is not found, there should be a 404 status code.
+- The product details are included in the static shell.
+- There is a `cacheLife("hours")` directive at the route level.
+- The stock information is loaded dynamically.
+- Featured products are pre-rendered at build time; other products at run-time.
+
+I currently see these headers:
+
+```
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+Cache-Control: s-maxage=3600, stale-while-revalidate=82800
+ETag: "rir6j2g1kphcz"
+```
+
 ## Conclusions
 
 - A fully SSG route with no other configuration emits headers that permit
