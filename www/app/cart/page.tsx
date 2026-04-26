@@ -12,13 +12,14 @@ import { cacheLife } from 'next/cache';
 
 export default async function Page() {
 	'use cache';
-	cacheLife('days');
+	cacheLife('weeks');
 
 	return <CartPage />;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
 	'use cache';
+	cacheLife('weeks');
 
 	const config = await getStoreConfiguration();
 	return transformMetadata(config);
